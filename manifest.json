@@ -1,0 +1,17 @@
+{
+  "name": "Umbral",
+  "short_name": "Umbral",
+  "description": "Mide a qué distancia estás del puntaje de corte de tu carrera.",
+  "lang": "es-PE",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#edeae1",
+  "theme_color": "#edeae1",
+  "categories": ["education"],
+  "icons": [
+    { "src": "./icono.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "./icono-mascara.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "maskable" }
+  ]
+}

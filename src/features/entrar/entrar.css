@@ -1,0 +1,134 @@
+/* Entrada. Una columna estrecha, sin adornos: nadie llega aquí por gusto. */
+
+.entrar {
+  max-width: 24rem;
+  padding: var(--espacio-7) var(--espacio-4) var(--espacio-6);
+}
+.entrar__cabecera {
+  margin-bottom: var(--espacio-6);
+}
+.entrar__marca {
+  display: flex;
+  align-items: center;
+  gap: var(--espacio-2);
+  font-family: var(--serif);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--grafito);
+  margin-bottom: var(--espacio-5);
+  letter-spacing: 0.02em;
+}
+/* El logotipo es la idea del producto: la puerta y la línea que hay que
+   cruzar. El arco toma el color del texto, así que funciona en los dos temas. */
+.marca {
+  width: 34px;
+  height: 25px;
+  color: var(--grafito);
+  flex: 0 0 auto;
+}
+.entrar__titulo {
+  font-size: 1.75rem;
+}
+.entrar__nota {
+  font-size: var(--tamano-menor);
+  color: var(--tinta-suave);
+  margin-bottom: var(--espacio-4);
+}
+
+.entrar__forma {
+  display: grid;
+  gap: var(--espacio-4);
+}
+
+.campo {
+  display: grid;
+  gap: var(--espacio-1);
+}
+.campo__etiqueta {
+  font-size: var(--tamano-nota);
+  font-weight: 600;
+  color: var(--tinta-suave);
+}
+.campo__control {
+  min-height: 46px;
+  padding: 0 var(--espacio-3);
+  font: inherit;
+  font-size: var(--tamano-menor);
+  color: var(--tinta);
+  background: var(--papel-elevado);
+  border: 1px solid var(--linea-fuerte);
+  border-radius: var(--radio);
+}
+.campo__control:focus {
+  border-color: var(--grafito);
+}
+.campo__ayuda {
+  font-size: var(--tamano-nota);
+  color: var(--tinta-tenue);
+}
+
+.casilla {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--espacio-3);
+  align-items: start;
+  font-size: var(--tamano-nota);
+  color: var(--tinta-suave);
+  line-height: 1.45;
+  cursor: pointer;
+}
+.casilla input {
+  width: 18px;
+  height: 18px;
+  margin-top: 1px;
+  accent-color: var(--rojo);
+}
+
+.mensaje {
+  padding: var(--espacio-3);
+  font-size: var(--tamano-nota);
+  border-left: 3px solid;
+}
+.mensaje--error {
+  background: var(--rojo-fondo);
+  border-color: var(--rojo);
+  color: var(--rojo);
+}
+.mensaje--aviso {
+  background: var(--pino-fondo);
+  border-color: var(--pino);
+  color: var(--pino);
+}
+
+.entrar__enlaces {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--espacio-3);
+}
+.enlace {
+  padding: 0;
+  background: none;
+  border: 0;
+  font-size: var(--tamano-nota);
+  color: var(--tinta-suave);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+.enlace:hover { color: var(--grafito); }
+
+.entrar__demo {
+  margin-top: var(--espacio-6);
+  padding-top: var(--espacio-4);
+  border-top: var(--borde);
+  font-size: var(--tamano-nota);
+  color: var(--tinta-tenue);
+}
+
+/* Campo marcado por el validador. El color no es la única señal: el mensaje
+   nombra el problema y el foco salta al campo. */
+.campo__control--error {
+  border-color: var(--rojo);
+  border-width: 2px;
+}

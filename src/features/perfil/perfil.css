@@ -1,0 +1,61 @@
+.perfil {
+  padding: var(--espacio-5) 0 var(--espacio-6);
+}
+.perfil__cabecera {
+  padding-bottom: var(--espacio-4);
+  border-bottom: 2px solid var(--grafito);
+  margin-bottom: var(--espacio-5);
+}
+.perfil__nombre { font-size: var(--tamano-titulo); }
+.perfil__correo {
+  font-size: var(--tamano-menor);
+  color: var(--tinta-suave);
+  margin-top: 2px;
+}
+.perfil__bloque {
+  margin-bottom: var(--espacio-6);
+}
+.perfil__titulo {
+  font-size: var(--tamano-seccion);
+  padding-bottom: var(--espacio-2);
+  border-bottom: var(--borde);
+  margin-bottom: var(--espacio-3);
+}
+.perfil__nota {
+  font-size: var(--tamano-nota);
+  color: var(--tinta-suave);
+  margin-bottom: var(--espacio-3);
+}
+.dato {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--espacio-4);
+  padding: var(--espacio-2) 0;
+  border-bottom: var(--borde);
+  font-size: var(--tamano-menor);
+}
+.dato__etiqueta { color: var(--tinta-suave); }
+.dato__valor { font-weight: 600; text-align: right; }
+
+.perfil__acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espacio-4);
+}
+
+.perfil__academia {
+  display: flex;
+  align-items: center;
+  gap: var(--espacio-2);
+  margin-top: var(--espacio-3);
+  font-size: var(--tamano-menor);
+  color: var(--tinta-suave);
+}
+.perfil__insignia {
+  padding: 2px 9px;
+  background: var(--papel-hundido);
+  border-radius: 999px;
+  font-size: var(--tamano-micro);
+  font-weight: 600;
+  color: var(--grafito);
+}

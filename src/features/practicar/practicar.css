@@ -1,0 +1,209 @@
+/* Práctica. La hoja vive junto a su vista y se carga con ella. */
+
+.practica {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: var(--espacio-5) var(--espacio-4) var(--espacio-7);
+}
+.practica__tarjeta {
+  padding: var(--espacio-6) var(--espacio-5);
+  background: var(--papel-elevado);
+  border: 1px solid var(--linea);
+  border-radius: 14px;
+  box-shadow: var(--sombra);
+}
+
+.practica-progreso {
+  margin-bottom: var(--espacio-5);
+}
+.practica-progreso__texto {
+  font-size: var(--tamano-nota);
+  color: var(--tinta-tenue);
+  margin-bottom: var(--espacio-2);
+  font-variant-numeric: tabular-nums;
+}
+.practica-progreso__pista {
+  height: 5px;
+  border-radius: 3px;
+  background: var(--papel-hundido);
+  overflow: hidden;
+}
+.practica-progreso__avance {
+  height: 100%;
+  background: var(--grafito);
+  transition: width 200ms ease;
+}
+
+.practica-enunciado {
+  font-size: 1.375rem;
+  line-height: 1.4;
+  margin-bottom: var(--espacio-5);
+}
+
+.opciones {
+  display: grid;
+  gap: var(--espacio-2);
+  margin-bottom: var(--espacio-5);
+}
+
+/* Casilla de hoja de respuestas: rectángulo con letra a la izquierda. */
+.opcion {
+  display: grid;
+  grid-template-columns: 2.25rem 1fr auto;
+  align-items: center;
+  gap: var(--espacio-3);
+  width: 100%;
+  min-height: 58px;
+  padding: var(--espacio-3) var(--espacio-4);
+  text-align: left;
+  background: var(--papel);
+  border: 1.5px solid var(--linea);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: border-color 120ms ease, background 120ms ease;
+}
+.opcion:hover:not(:disabled) {
+  border-color: var(--linea-fuerte);
+}
+.opcion:disabled {
+  cursor: default;
+}
+
+.opcion__letra {
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 1px solid var(--linea-fuerte);
+  border-radius: 50%;
+  font-size: var(--tamano-nota);
+  font-weight: 600;
+  color: var(--tinta-suave);
+}
+.opcion__texto {
+  font-size: var(--tamano-menor);
+  line-height: 1.5;
+}
+.opcion__marca {
+  font-size: var(--tamano-nota);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.opcion--marcada {
+  border-color: var(--grafito);
+  background: var(--papel-hundido);
+}
+.opcion--marcada .opcion__letra {
+  background: var(--grafito);
+  border-color: var(--grafito);
+  color: var(--papel);
+}
+
+.opcion--correcta {
+  border-color: var(--pino);
+  background: var(--pino-fondo);
+}
+.opcion--correcta .opcion__letra,
+.opcion--correcta .opcion__marca {
+  color: var(--pino);
+  border-color: var(--pino);
+}
+
+.opcion--fallada {
+  border-color: var(--rojo);
+  background: var(--rojo-fondo);
+}
+.opcion--fallada .opcion__letra,
+.opcion--fallada .opcion__marca {
+  color: var(--rojo);
+  border-color: var(--rojo);
+}
+
+.veredicto-practica {
+  padding: var(--espacio-4);
+  border-left: 3px solid;
+  margin-bottom: var(--espacio-5);
+}
+.veredicto-practica--bien {
+  background: var(--pino-fondo);
+  border-color: var(--pino);
+}
+.veredicto-practica--mal {
+  background: var(--rojo-fondo);
+  border-color: var(--rojo);
+}
+.veredicto-practica__titulo {
+  font-weight: 600;
+  font-size: var(--tamano-menor);
+  margin-bottom: var(--espacio-2);
+}
+.veredicto-practica--bien .veredicto-practica__titulo { color: var(--pino); }
+.veredicto-practica--mal .veredicto-practica__titulo { color: var(--rojo); }
+.veredicto-practica__cuerpo {
+  font-size: var(--tamano-menor);
+  line-height: 1.6;
+  color: var(--tinta);
+}
+
+.boton:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.practica-ayuda {
+  margin-top: var(--espacio-4);
+  font-size: var(--tamano-nota);
+  color: var(--tinta-tenue);
+  text-align: center;
+}
+
+.resumen {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: var(--espacio-7) var(--espacio-5);
+  background: var(--papel-elevado);
+  border: 1px solid var(--linea);
+  border-radius: 14px;
+  box-shadow: var(--sombra);
+}
+.resumen__rotulo {
+  font-size: var(--tamano-nota);
+  color: var(--tinta-tenue);
+}
+.resumen__cifra {
+  font-family: var(--serif);
+  font-size: var(--tamano-cifra);
+  font-weight: 700;
+  color: var(--grafito);
+  line-height: 1;
+  margin: var(--espacio-2) 0;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+.resumen__detalle {
+  font-size: var(--tamano-menor);
+  color: var(--tinta-suave);
+}
+.resumen__nota {
+  margin: var(--espacio-4) 0 var(--espacio-5);
+  padding-left: var(--espacio-3);
+  border-left: 2px solid var(--linea-fuerte);
+  font-size: var(--tamano-nota);
+  color: var(--tinta-suave);
+}
+.resumen .boton {
+  text-decoration: none;
+}
+
+/* KaTeX hereda el color de la tinta en vez de imponer el suyo. */
+.katex { color: inherit; font-size: 1.05em; }
+
+.resumen__racha {
+  margin-bottom: var(--espacio-4);
+  padding: var(--espacio-2) var(--espacio-3);
+  background: var(--pino-fondo);
+  color: var(--pino);
+  border-radius: var(--radio-grande);
+  font-size: var(--tamano-nota);
+  font-weight: 600;
+}

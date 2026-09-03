@@ -1,0 +1,253 @@
+.admin { padding: var(--espacio-5) 0 var(--espacio-6); }
+
+.admin__cabecera {
+  padding-bottom: var(--espacio-4);
+  border-bottom: 2px solid var(--grafito);
+}
+.admin__h1 { font-size: var(--tamano-titulo); }
+.admin__sub { font-size: var(--tamano-menor); color: var(--tinta-suave); margin-top: 2px; }
+
+.admin__pestanas {
+  display: flex;
+  gap: var(--espacio-4);
+  margin: var(--espacio-4) 0 var(--espacio-5);
+  border-bottom: var(--borde);
+}
+.admin__pestana {
+  padding: var(--espacio-2) 0;
+  background: none;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  font-size: var(--tamano-menor);
+  color: var(--tinta-tenue);
+  cursor: pointer;
+}
+.admin__pestana--activa { color: var(--grafito); font-weight: 600; border-bottom-color: var(--rojo); }
+
+.admin__titulo {
+  font-size: var(--tamano-seccion);
+  margin: var(--espacio-6) 0 var(--espacio-2);
+  padding-bottom: var(--espacio-2);
+  border-bottom: var(--borde);
+}
+.admin__nota { font-size: var(--tamano-nota); color: var(--tinta-suave); margin-bottom: var(--espacio-3); }
+
+/* El dato que abre el panel: la consecuencia para el alumno. */
+.consecuencia {
+  display: flex;
+  align-items: baseline;
+  gap: var(--espacio-4);
+  padding: var(--espacio-5) 0;
+}
+.consecuencia__cifra {
+  font-family: var(--serif);
+  font-size: var(--tamano-cifra);
+  font-weight: 700;
+  line-height: 0.85;
+  color: var(--rojo);
+  font-variant-numeric: lining-nums tabular-nums;
+}
+.consecuencia__texto {
+  font-size: var(--tamano-menor);
+  color: var(--tinta);
+  max-width: 26rem;
+}
+
+.huecos, .huerfanos, .items, .registro { list-style: none; margin: 0; padding: 0; }
+
+.hueco, .item, .huerfano {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--espacio-4);
+  padding: var(--espacio-3) 0;
+  border-bottom: var(--borde);
+}
+.hueco__principal, .item__principal { display: grid; gap: 2px; min-width: 0; }
+.hueco__curso, .item__nombre {
+  font-size: var(--tamano-menor);
+  font-weight: 600;
+  color: var(--grafito);
+}
+.hueco__detalle, .item__meta { font-size: var(--tamano-nota); color: var(--tinta-tenue); }
+.hueco__estado {
+  font-size: var(--tamano-nota);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.hueco__estado--critico { color: var(--rojo); }
+.hueco__estado--medio { color: var(--ocre); }
+.hueco__estado--bueno { color: var(--pino); }
+
+.huerfano { font-size: var(--tamano-menor); }
+.huerfano__conteo { color: var(--tinta-tenue); font-size: var(--tamano-nota); white-space: nowrap; }
+
+.item__marca {
+  font-size: var(--tamano-nota);
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+.item__marca--vivo { color: var(--pino); }
+.item__marca--borrador { color: var(--tinta-tenue); }
+.item__acciones { display: flex; gap: var(--espacio-3); white-space: nowrap; }
+.enlace--peligro { color: var(--rojo); }
+
+.registro__linea {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2px var(--espacio-3);
+  padding: var(--espacio-3) 0;
+  border-bottom: var(--borde);
+  font-size: var(--tamano-nota);
+  color: var(--tinta-suave);
+}
+.registro__quien { grid-column: 1 / -1; font-weight: 600; color: var(--grafito); }
+.registro__cuando { color: var(--tinta-tenue); text-align: right; }
+
+/* Deshacer. Criterio 6.3: nada se borra en firme, así que no hace falta un
+   cuadro de confirmación que la gente acepta sin leer. */
+.deshacer {
+  display: flex;
+  align-items: center;
+  gap: var(--espacio-3);
+  padding: var(--espacio-3) var(--espacio-4);
+  margin-bottom: var(--espacio-4);
+  background: var(--papel-elevado);
+  border: 1px solid var(--linea);
+  border-left: 3px solid var(--ocre);
+  border-radius: var(--radio-grande);
+  box-shadow: var(--sombra);
+  font-size: var(--tamano-menor);
+}
+.deshacer__texto { flex: 1; min-width: 0; color: var(--tinta); }
+.deshacer__accion {
+  padding: var(--espacio-1) var(--espacio-3);
+  background: none;
+  border: 1px solid var(--grafito);
+  border-radius: var(--radio);
+  font-size: var(--tamano-micro);
+  font-weight: 600;
+  color: var(--grafito);
+  cursor: pointer;
+}
+.deshacer__cerrar {
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  background: none;
+  border: 0;
+  color: var(--tinta-tenue);
+  cursor: pointer;
+  font-size: 0;
+}
+.deshacer__cerrar::before { content: '×'; font-size: 20px; line-height: 1; }
+
+/* Generación de preguntas */
+.generar__area {
+  width: 100%;
+  padding: var(--espacio-3);
+  font: inherit;
+  font-size: var(--tamano-menor);
+  line-height: 1.6;
+  color: var(--tinta);
+  background: var(--papel-elevado);
+  border: 1px solid var(--linea-fuerte);
+  border-radius: var(--radio-grande);
+  resize: vertical;
+}
+.generar__fila {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espacio-3);
+  margin-top: var(--espacio-3);
+}
+.generar__control {
+  flex: 1 1 10rem;
+  min-height: 44px;
+  padding: 0 var(--espacio-3);
+  font: inherit;
+  font-size: var(--tamano-menor);
+  color: var(--tinta);
+  background: var(--papel-elevado);
+  border: 1px solid var(--linea-fuerte);
+  border-radius: var(--radio);
+}
+
+.medidor {
+  margin-top: var(--espacio-4);
+  padding: var(--espacio-3) var(--espacio-4);
+  background: var(--papel-elevado);
+  border: 1px solid var(--linea);
+  border-radius: var(--radio-grande);
+}
+.medidor__fila { display: flex; justify-content: space-between; align-items: baseline; gap: var(--espacio-3); }
+.medidor__texto { font-size: var(--tamano-nota); color: var(--tinta-suave); }
+.medidor__cifra {
+  font-family: var(--serif);
+  font-weight: 700;
+  color: var(--grafito);
+  font-variant-numeric: lining-nums tabular-nums;
+}
+.medidor__pista {
+  height: 6px;
+  margin: var(--espacio-2) 0 var(--espacio-2);
+  background: var(--papel-hundido);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.medidor__usado { height: 100%; background: var(--ocre); }
+.medidor__nota { font-size: var(--tamano-micro); color: var(--tinta-tenue); }
+
+.lote {
+  margin-top: var(--espacio-5);
+  padding: var(--espacio-4);
+  background: var(--papel-hundido);
+  border-radius: var(--radio-grande);
+}
+.lote__titulo { font-size: var(--tamano-menor); color: var(--tinta); }
+.lote__detalle { margin-top: var(--espacio-3); font-size: var(--tamano-nota); }
+.lote__detalle summary { cursor: pointer; color: var(--tinta-suave); }
+.lote__lista { list-style: none; margin: var(--espacio-3) 0 0; padding: 0; }
+.lote__lista li { display: grid; gap: 2px; padding: var(--espacio-2) 0; border-bottom: 1px solid var(--linea); }
+.lote__enunciado { color: var(--tinta-suave); }
+.lote__motivo { color: var(--rojo); font-size: var(--tamano-micro); }
+
+.borradores { list-style: none; margin: var(--espacio-4) 0 0; padding: 0; }
+.borrador {
+  padding: var(--espacio-4) var(--espacio-5);
+  margin-bottom: var(--espacio-3);
+  background: var(--papel-elevado);
+  border: 1px solid var(--linea);
+  border-left: 4px solid var(--linea-fuerte);
+  border-radius: 0 12px 12px 0;
+  box-shadow: var(--sombra);
+}
+.borrador--avisado { border-left-color: var(--ocre); }
+.borrador__avisos {
+  list-style: none;
+  margin: 0 0 var(--espacio-3);
+  padding: var(--espacio-2) var(--espacio-3);
+  background: var(--ocre-fondo);
+  border-radius: var(--radio);
+  font-size: var(--tamano-nota);
+  color: var(--ocre);
+}
+.borrador__enunciado { font-size: var(--tamano-menor); font-weight: 600; color: var(--grafito); }
+.borrador__opciones {
+  margin: var(--espacio-3) 0;
+  padding-left: var(--espacio-5);
+  font-size: var(--tamano-nota);
+  color: var(--tinta-suave);
+}
+.borrador__opciones li { padding: 2px 0; }
+.borrador__opcion--correcta { color: var(--pino); font-weight: 600; }
+.borrador__explicacion {
+  font-size: var(--tamano-nota);
+  color: var(--tinta);
+  padding-left: var(--espacio-3);
+  border-left: 2px solid var(--linea);
+}
+.borrador__meta { margin-top: var(--espacio-3); font-size: var(--tamano-micro); color: var(--tinta-tenue); }
+.borrador__acciones { display: flex; flex-wrap: wrap; gap: var(--espacio-3); margin-top: var(--espacio-4); align-items: center; }
+.borrador__editar { margin-top: var(--espacio-4); display: grid; gap: var(--espacio-2); justify-items: start; }

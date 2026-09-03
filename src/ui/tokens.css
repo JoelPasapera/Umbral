@@ -1,0 +1,150 @@
+/*
+  Tokens de diseño.
+
+  Este es el único archivo del proyecto donde puede aparecer un color escrito
+  a mano. Cualquier otro archivo que traiga un hex es un error de revisión.
+  Esa regla es la que hace que el modo noche salga gratis y que no haga falta
+  ni un solo !important.
+
+  Referencia visual: la hoja de respuestas del examen de admisión. Papel
+  periódico, grafito, lapicero rojo de corrección.
+*/
+
+:root {
+  color-scheme: light dark;
+
+  /* Papel y tinta */
+  --papel: #e6e1d4;
+  --papel-hundido: #dbd5c4;
+  --papel-elevado: #fbf9f4;
+  --grafito: #14130e;
+  --tinta: #26241c;
+  --tinta-suave: #5c574a;
+  --tinta-tenue: #5f5a4c;
+  --linea: #cec8b6;
+  --linea-fuerte: #86806c;
+  --sombra: 0 1px 2px rgba(20, 19, 14, .06), 0 6px 18px rgba(20, 19, 14, .05);
+
+  /* Marcas de corrección */
+  --rojo: #a8322a;
+  --rojo-fondo: #f6e5e2;
+  --pino: #33553f;
+  --pino-fondo: #e0ebe2;
+  --ocre: #8f5c0f;
+  --ocre-fondo: #f5ead4;
+
+  /* Superficie destacada: la tarjeta del índice. Contrasta con la página en
+     los dos temas, pero nunca es blanca de noche — deslumbrar a las tres de la
+     madrugada contradice la razón de existir del modo noche. */
+  --destacado-fondo: #14130e;
+  --destacado-tinta: #fbf9f4;
+  --destacado-tenue: #b8b3a5;
+  --destacado-linea: #3b3930;
+  --rojo-sobre-destacado: #d4675a;
+  --rojo-realce: #f0a094;
+  --pino-sobre-destacado: #6fae83;
+  --pino-realce: #9ed3ae;
+
+  /* Tipografía */
+  --serif: 'Bitter', Georgia, 'Times New Roman', serif;
+  --sans: 'Public Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --tamano-cifra: clamp(3.25rem, 12vw, 4.5rem);
+  --tamano-titulo: 1.375rem;
+  --tamano-seccion: 0.9375rem;
+  --tamano-cuerpo: 1rem;
+  --tamano-menor: 0.875rem;
+  --tamano-nota: 0.8125rem;
+  --tamano-micro: 0.75rem;
+
+  /* Ritmo */
+  --espacio-1: 0.25rem;
+  --espacio-2: 0.5rem;
+  --espacio-3: 0.75rem;
+  --espacio-4: 1rem;
+  --espacio-5: 1.5rem;
+  --espacio-6: 2rem;
+  --espacio-7: 3rem;
+
+  --ancho-lectura: 34rem;
+  --ancho-panel: 68rem;
+  --radio: 3px;
+  --radio-grande: 6px;
+  --borde: 1px solid var(--linea);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --papel: #14131a;
+    --papel-hundido: #0d0c11;
+    --papel-elevado: #201f28;
+    --grafito: #f4f2ec;
+    --tinta: #e6e3da;
+    --tinta-suave: #a8a396;
+    --tinta-tenue: #a8a390;
+    --linea: #33313d;
+    --linea-fuerte: #6f6b80;
+    --sombra: 0 1px 2px rgba(0,0,0,.3), 0 6px 18px rgba(0,0,0,.25);
+  --destacado-fondo: #24222e;
+  --destacado-tinta: #f6f4ee;
+  --destacado-tenue: #a9a4b4;
+  --destacado-linea: #3d3a4b;
+  --rojo-sobre-destacado: #e08b80;
+  --rojo-realce: #f2ada3;
+  --pino-sobre-destacado: #7fb994;
+  --pino-realce: #a5d5b3;
+
+    --rojo: #e08b80;
+    --rojo-fondo: #2e1c1b;
+    --pino: #8fc09b;
+    --pino-fondo: #16241a;
+    --ocre: #d9a851;
+    --ocre-fondo: #2a2113;
+  }
+}
+
+[data-tema='noche'] {
+  --papel: #14131a;
+  --papel-hundido: #0d0c11;
+  --papel-elevado: #201f28;
+  --grafito: #f4f2ec;
+  --tinta: #e6e3da;
+  --tinta-suave: #a8a396;
+  --tinta-tenue: #a8a390;
+  --linea: #33313d;
+  --linea-fuerte: #6f6b80;
+  --sombra: 0 1px 2px rgba(0,0,0,.3), 0 6px 18px rgba(0,0,0,.25);
+  --destacado-fondo: #24222e;
+  --destacado-tinta: #f6f4ee;
+  --destacado-tenue: #a9a4b4;
+  --destacado-linea: #3d3a4b;
+  --rojo-sobre-destacado: #e08b80;
+  --rojo-realce: #f2ada3;
+  --pino-sobre-destacado: #7fb994;
+  --pino-realce: #a5d5b3;
+  --rojo: #e08b80;
+  --rojo-fondo: #2e1c1b;
+  --pino: #8fc09b;
+  --pino-fondo: #16241a;
+  --ocre: #d9a851;
+  --ocre-fondo: #2a2113;
+}
+
+[data-tema='papel'] {
+  --papel: #e6e1d4;
+  --papel-hundido: #dbd5c4;
+  --papel-elevado: #fbf9f4;
+  --grafito: #14130e;
+  --tinta: #26241c;
+  --tinta-suave: #5c574a;
+  --tinta-tenue: #5f5a4c;
+  --linea: #cec8b6;
+  --linea-fuerte: #86806c;
+  --sombra: 0 1px 2px rgba(20, 19, 14, .06), 0 6px 18px rgba(20, 19, 14, .05);
+  --rojo: #a8322a;
+  --rojo-fondo: #f4e2df;
+  --pino: #3d5a45;
+  --pino-fondo: #e2eae2;
+  --ocre: #9a6414;
+  --ocre-fondo: #f4e9d6;
+}

@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="es" data-tema="">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Umbral — cuánto te falta para ingresar</title>
+<meta name="description" content="Umbral mide a qué distancia estás del puntaje de corte de tu carrera y te dice exactamente dónde estás perdiendo puntos.">
+<link rel="canonical" href="https://umbral.pe/">
+<link rel="manifest" href="./manifest.json">
+<link rel="icon" href="./icono.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="./icono.svg">
+<meta name="apple-mobile-web-app-title" content="Umbral">
+<meta name="mobile-web-app-capable" content="yes">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Umbral — cuánto te falta para ingresar">
+<meta property="og:description" content="Umbral mide a qué distancia estás del puntaje de corte de tu carrera y te dice exactamente dónde estás perdiendo puntos.">
+<meta property="og:url" content="https://umbral.pe/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#edeae1" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#16151a" media="(prefers-color-scheme: dark)">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bitter:wght@600..700&family=Public+Sans:wght@400..600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bitter:wght@600..700&family=Public+Sans:wght@400..600&display=swap">
+
+<link rel="stylesheet" href="./src/ui/tokens.css">
+<link rel="stylesheet" href="./src/ui/base.css">
+<link rel="stylesheet" href="./src/features/meta/meta.css">
+<link rel="stylesheet" href="./src/features/practicar/practicar.css">
+<link rel="stylesheet" href="./src/features/estudiar/estudiar.css">
+<link rel="stylesheet" href="./src/features/entrar/entrar.css">
+<link rel="stylesheet" href="./src/features/perfil/perfil.css">
+<link rel="stylesheet" href="./src/features/admin/admin.css">
+<link rel="stylesheet" href="./src/features/terminos/terminos.css">
+<link rel="stylesheet" href="./src/features/elegir/elegir.css">
+</head>
+<body>
+
+<a class="salto-contenido" href="#contenido">Saltar al contenido</a>
+
+<header id="avisos" class="avisos" aria-label="Avisos de la aplicación">
+  <p class="aviso-simulado" id="aviso-simulado" hidden>Datos de ejemplo. Todavía no hay backend conectado.</p>
+</header>
+
+<main id="contenido" tabindex="-1">
+  <p class="cargando">Cargando tu preparación…</p>
+</main>
+
+<nav class="navegacion" aria-label="Secciones">
+  <a class="navegacion__enlace" href="#/meta">Meta</a>
+  <a class="navegacion__enlace" href="#/estudiar">Estudiar</a>
+  <a class="navegacion__enlace" href="#/practicar">Practicar</a>
+  <a class="navegacion__enlace" href="#/perfil">Perfil</a>
+</nav>
+
+<button class="solo-lectores" id="cambiar-tema" type="button">Cambiar entre modo papel y modo noche</button>
+
+<noscript>
+  <p class="cargando">Umbral necesita JavaScript para calcular tu preparación.</p>
+</noscript>
+
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>

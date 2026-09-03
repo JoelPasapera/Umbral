@@ -1,0 +1,36 @@
+.terminos {
+  max-width: 38rem;
+  padding: var(--espacio-5) var(--espacio-4) var(--espacio-7);
+}
+.terminos__cabecera {
+  padding-bottom: var(--espacio-4);
+  border-bottom: 2px solid var(--grafito);
+  margin-bottom: var(--espacio-5);
+}
+.terminos__titulo { font-size: 1.5rem; }
+.terminos__nota {
+  font-size: var(--tamano-menor);
+  color: var(--tinta-suave);
+  margin-top: var(--espacio-2);
+}
+.terminos__seccion {
+  font-size: 1.0625rem;
+  margin-top: var(--espacio-6);
+  padding-bottom: var(--espacio-2);
+  border-bottom: 1px solid var(--linea);
+}
+.terminos__parrafo {
+  font-size: var(--tamano-menor);
+  line-height: 1.65;
+  margin-top: var(--espacio-3);
+  color: var(--tinta);
+}
+.terminos__pie {
+  margin: var(--espacio-6) 0 var(--espacio-4);
+  padding: var(--espacio-3) var(--espacio-4);
+  background: var(--ocre-fondo);
+  color: var(--ocre);
+  border-radius: var(--radio-grande);
+  font-size: var(--tamano-nota);
+}
+.terminos .boton { text-decoration: none; }

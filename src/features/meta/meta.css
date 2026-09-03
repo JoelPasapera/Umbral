@@ -1,0 +1,378 @@
+/* Meta. El índice es el elemento con más peso de todo el producto, así que
+   ocupa una superficie propia, oscura, y todo lo demás se apoya en ella. */
+
+.meta {
+  max-width: var(--ancho-panel);
+  margin: 0 auto;
+  padding: var(--espacio-5) var(--espacio-4) var(--espacio-7);
+}
+
+/* Cabecera */
+.meta-cabecera {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--espacio-2) var(--espacio-4);
+  margin-bottom: var(--espacio-4);
+}
+.meta-cabecera__grupo { min-width: 0; }
+.meta-cabecera__rotulo {
+  font-size: var(--tamano-nota);
+  color: var(--tinta-tenue);
+}
+.meta-cabecera__carrera {
+  font-size: 1.5rem;
+  line-height: 1.15;
+}
+.meta-cabecera__universidad {
+  font-size: var(--tamano-menor);
+  color: var(--tinta-suave);
+}
+.cuenta-atras {
+  display: flex;
+  align-items: baseline;
+  gap: var(--espacio-2);
+  padding: var(--espacio-2) var(--espacio-3);
+  background: var(--papel-elevado);
+  border: 1px solid var(--linea);
+  border-radius: var(--radio-grande);
+  box-shadow: var(--sombra);
+  white-space: nowrap;
+}
+.cuenta-atras__n {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--rojo);
+  font-variant-numeric: lining-nums tabular-nums;
+}
+.cuenta-atras__t { font-size: var(--tamano-nota); color: var(--tinta-suave); }
+
+/* Rejilla: en escritorio el índice manda a la izquierda y el desglose acompaña */
+.meta-rejilla {
+  display: grid;
+  gap: var(--espacio-5);
+}
+@media (min-width: 62rem) {
+  .meta-rejilla {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+    align-items: start;
+  }
+}
+
+/* Indicador */
+.indicador {
+  padding: var(--espacio-6) var(--espacio-5);
+  background: var(--destacado-fondo);
+  color: var(--destacado-tinta);
+  border-radius: 14px;
+  box-shadow: var(--sombra);
+}
+.indicador__rotulo {
+  font-size: var(--tamano-nota);
+  color: var(--destacado-tenue);
+  margin-bottom: var(--espacio-3);
+}
+.indicador__fila {
+  display: flex;
+  align-items: baseline;
+  gap: var(--espacio-3);
+}
+.indicador__cifra {
+  font-family: var(--serif);
+  font-size: clamp(4rem, 15vw, 5.75rem);
+  font-weight: 700;
+  line-height: 0.82;
+  color: var(--destacado-tinta);
+  font-variant-numeric: lining-nums tabular-nums;
+}
+.indicador__de {
+  font-size: 1.125rem;
+  color: var(--destacado-tenue);
+}
+.indicador__margen {
+  margin-top: var(--espacio-2);
+  font-size: var(--tamano-nota);
+  color: var(--destacado-tenue);
+}
+
+/* La escala. Es el corazón del producto: dónde estás y dónde está la línea. */
+.escala {
+  position: relative;
+  margin: var(--espacio-6) 0 var(--espacio-3);
+  height: 14px;
+  border-radius: 7px;
+  background: var(--destacado-linea);
+}
+.escala__relleno {
+  position: absolute;
+  inset: 0 auto 0 0;
+  border-radius: 7px;
+}
+.escala__relleno--falta { background: var(--rojo-sobre-destacado); }
+.escala__relleno--alcanza { background: var(--pino-sobre-destacado); }
+.escala__banda {
+  position: absolute;
+  top: -3px;
+  bottom: -3px;
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--destacado-tinta) 26%, transparent);
+}
+.escala__corte {
+  position: absolute;
+  top: -12px;
+  bottom: -12px;
+  width: 3px;
+  margin-left: -1.5px;
+  background: var(--destacado-tinta);
+  border-radius: 2px;
+}
+.escala__etiqueta {
+  position: absolute;
+  top: -40px;
+  transform: translateX(-50%);
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: var(--destacado-tinta);
+  color: var(--destacado-fondo);
+  font-size: var(--tamano-micro);
+  font-weight: 700;
+  white-space: nowrap;
+}
+.escala__extremos {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--tamano-micro);
+  color: var(--destacado-tenue);
+  font-variant-numeric: tabular-nums;
+}
+
+.veredicto {
+  margin-top: var(--espacio-5);
+  padding-top: var(--espacio-4);
+  border-top: 1px solid var(--destacado-linea);
+  font-size: var(--tamano-menor);
+  line-height: 1.5;
+}
+.veredicto strong { font-weight: 700; }
+.veredicto--falta strong { color: var(--rojo-realce); }
+.veredicto--alcanza strong { color: var(--pino-realce); }
+
+.indicador--sin-datos .indicador__vacio-titulo {
+  font-family: var(--serif);
+  font-size: 1.375rem;
+  margin-bottom: var(--espacio-3);
+}
+.indicador--sin-datos .indicador__vacio-cuerpo {
+  font-size: var(--tamano-menor);
+  color: var(--destacado-tenue);
+}
+
+/* Desglose por curso */
+.panel {
+  padding: var(--espacio-5);
+  background: var(--papel-elevado);
+  border: 1px solid var(--linea);
+  border-radius: 14px;
+  box-shadow: var(--sombra);
+}
+.panel__titulo { font-size: 1.0625rem; }
+.panel__nota {
+  font-size: var(--tamano-nota);
+  color: var(--tinta-tenue);
+  margin-top: 2px;
+}
+
+.cursos { list-style: none; margin: var(--espacio-4) 0 0; padding: 0; }
+.curso {
+  display: grid;
+  grid-template-columns: 1.15rem minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--espacio-3);
+  padding: var(--espacio-3) 0;
+  border-bottom: 1px solid var(--linea);
+}
+.curso:last-child { border-bottom: 0; }
+.curso__orden {
+  font-size: var(--tamano-micro);
+  color: var(--tinta-tenue);
+  font-variant-numeric: tabular-nums;
+}
+.curso__nombre {
+  font-size: var(--tamano-menor);
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+.curso__barra {
+  display: block;
+  height: 7px;
+  border-radius: 4px;
+  background: var(--papel-hundido);
+  overflow: hidden;
+}
+.curso__relleno { display: block; height: 100%; border-radius: 4px; }
+.curso__cifras { text-align: right; white-space: nowrap; }
+.curso__valor {
+  display: block;
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+.curso__recupera {
+  display: block;
+  font-size: var(--tamano-micro);
+  color: var(--tinta-tenue);
+  margin-top: 2px;
+}
+.curso--critico .curso__relleno { background: var(--rojo); }
+.curso--critico .curso__valor { color: var(--rojo); }
+.curso--medio .curso__relleno { background: var(--ocre); }
+.curso--medio .curso__valor { color: var(--ocre); }
+.curso--bueno .curso__relleno { background: var(--pino); }
+.curso--bueno .curso__valor { color: var(--pino); }
+
+.ver-mas {
+  width: 100%;
+  margin-top: var(--espacio-3);
+  padding: var(--espacio-3);
+  background: none;
+  border: 1px dashed var(--linea-fuerte);
+  border-radius: var(--radio);
+  color: var(--tinta-suave);
+  font-size: var(--tamano-nota);
+  font-weight: 500;
+  cursor: pointer;
+}
+.ver-mas:hover { background: var(--papel-hundido); color: var(--grafito); }
+
+.sin-datos {
+  margin-top: var(--espacio-4);
+  padding: var(--espacio-3);
+  background: var(--papel-hundido);
+  border-radius: var(--radio);
+  font-size: var(--tamano-nota);
+  color: var(--tinta-suave);
+  line-height: 1.5;
+}
+
+/* Tarea recomendada */
+.tarea {
+  margin-top: var(--espacio-5);
+  padding: var(--espacio-5);
+  background: var(--papel-elevado);
+  border: 1px solid var(--linea);
+  border-left: 4px solid var(--rojo);
+  border-radius: 14px;
+  box-shadow: var(--sombra);
+}
+.tarea__rotulo {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--tamano-micro);
+  font-weight: 700;
+  color: var(--rojo);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.tarea__titulo { font-size: 1.25rem; margin-top: var(--espacio-2); }
+.tarea__detalle {
+  font-size: var(--tamano-menor);
+  color: var(--tinta-suave);
+  margin: var(--espacio-2) 0 var(--espacio-4);
+}
+.tarea .boton { text-decoration: none; }
+
+.fuente {
+  margin-top: var(--espacio-5);
+  font-size: var(--tamano-micro);
+  color: var(--tinta-tenue);
+}
+
+/* Reto diario y constancia */
+.reto {
+  margin-top: var(--espacio-5);
+  padding: var(--espacio-5);
+  background: var(--papel-elevado);
+  border: 1px solid var(--linea);
+  border-radius: 14px;
+  box-shadow: var(--sombra);
+}
+.reto--hecho { border-left: 4px solid var(--pino); }
+.reto__cabecera {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--espacio-4);
+  margin-bottom: var(--espacio-4);
+}
+.reto__rotulo {
+  font-family: var(--serif);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--grafito);
+}
+.reto__nota {
+  font-size: var(--tamano-nota);
+  color: var(--tinta-suave);
+  margin-top: 2px;
+  max-width: 26rem;
+}
+.reto__racha {
+  display: grid;
+  justify-items: center;
+  padding: var(--espacio-2) var(--espacio-3);
+  background: var(--papel-hundido);
+  border-radius: var(--radio-grande);
+  white-space: nowrap;
+}
+.reto__racha-n {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--grafito);
+  font-variant-numeric: lining-nums tabular-nums;
+}
+.reto__racha-t { font-size: var(--tamano-micro); color: var(--tinta-suave); }
+.reto__hecho {
+  padding: var(--espacio-3) var(--espacio-4);
+  background: var(--pino-fondo);
+  color: var(--pino);
+  border-radius: var(--radio-grande);
+  font-size: var(--tamano-menor);
+}
+.reto .boton { text-decoration: none; }
+
+.constancia {
+  margin-top: var(--espacio-5);
+  padding-top: var(--espacio-4);
+  border-top: 1px solid var(--linea);
+}
+.constancia__fila {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: var(--espacio-3);
+}
+.constancia__titulo { font-size: var(--tamano-nota); color: var(--tinta-suave); font-weight: 600; }
+.constancia__conteo { font-size: var(--tamano-nota); color: var(--tinta-tenue); font-variant-numeric: tabular-nums; }
+.constancia__grid {
+  display: grid;
+  grid-template-columns: repeat(14, 1fr);
+  gap: 5px;
+}
+.constancia__dia {
+  aspect-ratio: 1;
+  border-radius: 3px;
+  background: var(--papel-hundido);
+}
+.constancia__dia--hecho { background: var(--pino); }
+.constancia__aliento {
+  margin-top: var(--espacio-3);
+  font-size: var(--tamano-nota);
+  color: var(--tinta-suave);
+}

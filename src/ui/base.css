@@ -1,0 +1,212 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--papel);
+  color: var(--tinta);
+  font-family: var(--sans);
+  font-size: var(--tamano-cuerpo);
+  line-height: 1.55;
+  font-optical-sizing: auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--serif);
+  color: var(--grafito);
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+p {
+  margin: 0;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--rojo);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.salto-contenido {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--grafito);
+  color: var(--papel);
+  padding: var(--espacio-3) var(--espacio-4);
+  z-index: 10;
+}
+.salto-contenido:focus {
+  left: var(--espacio-3);
+  top: var(--espacio-3);
+}
+
+.solo-lectores {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.envoltura {
+  max-width: var(--ancho-lectura);
+  margin: 0 auto;
+  padding: 0 var(--espacio-4);
+}
+
+/* Botón: rectángulo de formulario impreso, no pastilla de SaaS. */
+.boton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--espacio-2);
+  min-height: 46px;
+  padding: 0 var(--espacio-5);
+  border: 1px solid var(--grafito);
+  border-radius: var(--radio);
+  background: var(--grafito);
+  color: var(--papel);
+  font-size: var(--tamano-menor);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 120ms ease;
+}
+.boton:hover {
+  background: var(--tinta);
+}
+.boton:active {
+  transform: translateY(1px);
+}
+
+.boton--secundario {
+  background: transparent;
+  color: var(--grafito);
+  border-color: var(--linea-fuerte);
+}
+.boton--secundario:hover {
+  background: var(--papel-hundido);
+}
+
+.boton--ancho {
+  width: 100%;
+}
+
+.estado-vacio {
+  padding: var(--espacio-7) var(--espacio-4);
+  text-align: left;
+  max-width: var(--ancho-lectura);
+  margin: 0 auto;
+}
+.estado-vacio__titulo {
+  font-family: var(--serif);
+  font-size: var(--tamano-titulo);
+  color: var(--grafito);
+  margin-bottom: var(--espacio-2);
+}
+.estado-vacio__cuerpo {
+  color: var(--tinta-suave);
+  margin-bottom: var(--espacio-5);
+}
+
+.cargando {
+  padding: var(--espacio-7) var(--espacio-4);
+  color: var(--tinta-tenue);
+  font-size: var(--tamano-menor);
+  max-width: var(--ancho-lectura);
+  margin: 0 auto;
+}
+
+/* Barra inferior de navegación */
+.navegacion {
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  background: var(--papel-elevado);
+  border-top: var(--borde);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+.navegacion__enlace {
+  flex: 1;
+  padding: var(--espacio-3) var(--espacio-1);
+  text-align: center;
+  text-decoration: none;
+  color: var(--tinta-tenue);
+  font-size: var(--tamano-nota);
+  font-weight: 500;
+  border-top: 2px solid transparent;
+  margin-top: -1px;
+}
+.navegacion__enlace[aria-current='page'] {
+  color: var(--grafito);
+  border-top-color: var(--rojo);
+}
+
+.aviso-simulado {
+  background: var(--ocre-fondo);
+  color: var(--ocre);
+  font-size: var(--tamano-nota);
+  padding: var(--espacio-2) var(--espacio-4);
+  text-align: center;
+  border-bottom: var(--borde);
+}
+
+/* Avisos de sistema. Van arriba del todo, empujan el contenido en vez de
+   taparlo: una barra flotante sobre el botón de continuar es una trampa. */
+.aviso {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--espacio-4);
+  padding: var(--espacio-2) var(--espacio-4);
+  font-size: var(--tamano-nota);
+  border-bottom: var(--borde);
+}
+.aviso--aviso-sin-red {
+  background: var(--papel-hundido);
+  color: var(--tinta-suave);
+}
+.aviso--aviso-version {
+  background: var(--ocre-fondo);
+  color: var(--ocre);
+}
+.aviso--aviso-sincronizado {
+  background: var(--pino-fondo);
+  color: var(--pino);
+}
+.aviso__accion {
+  padding: var(--espacio-1) var(--espacio-3);
+  background: none;
+  border: 1px solid currentColor;
+  border-radius: var(--radio);
+  font-size: var(--tamano-nota);
+  font-weight: 600;
+  cursor: pointer;
+}
