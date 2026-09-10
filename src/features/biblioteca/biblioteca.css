@@ -1,0 +1,312 @@
+/*
+  Biblioteca.
+
+  Es una pantalla de hojear, no de leer. Por eso usa `--ancho-panel` (72rem) y
+  no `--ancho-lectura` (34rem): con el ancho de lectura, un catálogo se
+  convierte en una columna estrecha de filas apiladas en mitad de una pantalla
+  vacía, que es exactamente como se veía antes.
+
+  Todo lo que es una colección va en rejilla `auto-fill`: las tarjetas se
+  reparten según el ancho que haya, sin puntos de ruptura escritos a mano y sin
+  que sobre espacio a los lados.
+
+  Ningún color escrito a mano: todos salen de tokens.css (criterio 1.1).
+*/
+
+.biblioteca {
+  max-width: var(--ancho-panel);
+  margin: 0 auto;
+  padding: var(--espacio-6) var(--espacio-4) var(--espacio-7);
+}
+
+.biblioteca-cabecera { margin-bottom: var(--espacio-5); }
+.biblioteca-cabecera__titulo {
+  font-size: var(--tamano-titulo-pagina);
+  font-weight: 800;
+  color: var(--grafito);
+  margin: var(--espacio-2) 0;
+}
+/* El buscador vive en la cabecera, fuera de lo que se repinta: si se
+   reconstruyera en cada tecla, el navegador le quitaría el foco al sacarlo del
+   documento y no se podría escribir más de una letra. */
+.buscador { margin-top: var(--espacio-4); }
+.buscador__campo {
+  width: 100%;
+  max-width: 32rem;
+  padding: var(--espacio-3) var(--espacio-4);
+  border: 1px solid var(--linea);
+  border-radius: var(--radio-pildora);
+  background: var(--papel-elevado);
+  color: var(--tinta);
+  font: inherit;
+  font-size: var(--tamano-menor);
+}
+.buscador__campo:focus-visible {
+  outline: 2px solid var(--azul);
+  outline-offset: 1px;
+  border-color: var(--azul);
+}
+.buscador__campo::placeholder { color: var(--tinta-tenue); }
+
+.biblioteca-cabecera__nota {
+  font-size: var(--tamano-menor);
+  line-height: 1.6;
+  color: var(--tinta-suave);
+  max-width: 58ch;
+}
+
+/* Universidades: botones cuadrados en rejilla. La sigla manda porque es como
+   las nombra todo el mundo; el nombre completo va debajo, más pequeño, para
+   quien no reconozca las siglas de fuera de su región. */
+/* Universidades y sus exámenes comparten recuadro. Leerlos como dos secciones
+   separadas es lo que hacía preguntar a qué universidad pertenecían esos
+   exámenes; dentro del mismo marco la respuesta es evidente sin escribirla. */
+.bloque-casas {
+  border: 1px solid var(--linea);
+  border-radius: var(--radio-panel);
+  background: var(--papel-hundido);
+  padding: var(--espacio-4) var(--espacio-4) var(--espacio-5);
+  margin-bottom: var(--espacio-6);
+}
+.bloque-casas__pista {
+  font-size: var(--tamano-menor);
+  color: var(--tinta-suave);
+  margin: var(--espacio-2) 0 var(--espacio-4);
+}
+
+/* Fuera de la rejilla, debajo de ella.
+   Dentro era una casilla que abarcaba todas las columnas, y al abrirse la
+   rejilla recolocaba las doce tarjetas para hacerle sitio. Elegir algo no
+   puede mover lo que no se ha elegido. */
+.casas__panel {
+  margin-top: var(--espacio-4);
+  border: 1px solid var(--azul);
+  border-radius: var(--radio-grande);
+  background: var(--papel-elevado);
+  padding: var(--espacio-4);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .casas__panel { animation: abrir-panel 180ms cubic-bezier(.2,.7,.3,1); }
+}
+@keyframes abrir-panel {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: none; }
+}
+/* Dentro del panel de un curso conviven libros y materiales: el subtítulo los
+   separa sin necesidad de dos recuadros anidados. */
+.panel__seccion {
+  font-size: var(--tamano-menor);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--tinta-tenue);
+  margin: var(--espacio-5) 0 var(--espacio-3);
+}
+.panel__seccion:first-of-type { margin-top: var(--espacio-4); }
+.panel__titulo {
+  font-size: var(--tamano-titulo-tarjeta);
+  font-weight: 700;
+  color: var(--grafito);
+  margin-bottom: var(--espacio-3);
+}
+
+.casas {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(10.5rem, 1fr));
+  gap: var(--espacio-3);
+}
+.casas__casilla { display: grid; }
+.casa {
+  display: grid;
+  grid-template-rows: auto auto auto 1fr;
+  justify-items: center;
+  gap: var(--espacio-1);
+  width: 100%;
+  height: 100%;
+  padding: var(--espacio-4) var(--espacio-3);
+  border: 1px solid var(--linea);
+  border-radius: var(--radio-tarjeta);
+  background: var(--papel-elevado);
+  cursor: pointer;
+  text-align: center;
+}
+.casa:hover { border-color: var(--linea-fuerte); }
+.casa--activa { border-color: var(--azul); box-shadow: var(--sombra-azul-baja); }
+/* La que todavía no tiene convocatorias cargadas se atenúa pero no se esconde:
+   estar en el mapa sin material es distinto de no estar. */
+.casa--vacia .casa__sigla, .casa--vacia .casa__nombre { color: var(--tinta-tenue); }
+
+.casa__hueco { display: grid; place-items: center; width: 40px; height: 40px; }
+.casa__logo { display: block; width: 40px; height: 40px; object-fit: contain; }
+/* Marca tipográfica cuando no hay logotipo. Cuadrada y del mismo tamaño que
+   una imagen, para que mezclar las dos no descoloque la rejilla. */
+.casa__marca {
+  display: grid;
+  place-items: center;
+  min-width: 40px;
+  padding: 0 var(--espacio-2);
+  height: 40px;
+  border-radius: var(--radio);
+  background: var(--azul-fondo);
+  color: var(--azul);
+  font-size: 0.6875rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+.casa--activa .casa__marca { background: var(--azul); color: var(--sobre-azul); }
+.casa__sigla {
+  margin-top: var(--espacio-2);
+  font-weight: 700;
+  color: var(--tinta);
+}
+.casa__nombre {
+  font-size: var(--tamano-menor);
+  line-height: 1.35;
+  color: var(--tinta-suave);
+}
+/* El recuento se ancla abajo para que todas las tarjetas lo tengan a la misma
+   altura, aunque los nombres ocupen una o tres líneas. */
+.casa__cuenta {
+  margin-top: auto;
+  padding-top: var(--espacio-2);
+  font-size: var(--tamano-menor);
+  font-weight: 600;
+  color: var(--azul);
+}
+.casa__cuenta--vacia { color: var(--tinta-tenue); font-weight: 400; }
+
+/* Exámenes: una tarjeta por convocatoria con sus dos acciones. */
+.examenes {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+  gap: var(--espacio-3);
+}
+.convocatoria {
+  border: 1px solid var(--linea);
+  border-radius: var(--radio-grande);
+  background: var(--papel-elevado);
+  padding: var(--espacio-4);
+}
+/* La sigla va arriba y siempre, esté o no filtrado por universidad: si la
+   pertenencia depende de haber pulsado algo antes, no está resuelta. */
+.convocatoria__casa {
+  font-size: var(--tamano-menor);
+  font-weight: 700;
+  color: var(--azul);
+  letter-spacing: 0.02em;
+  margin-bottom: var(--espacio-1);
+}
+.convocatoria__proceso {
+  font-weight: 700;
+  color: var(--grafito);
+  font-variant-numeric: tabular-nums;
+  margin-bottom: var(--espacio-3);
+}
+.convocatoria__area {
+  font-size: var(--tamano-menor);
+  color: var(--tinta-tenue);
+  margin-bottom: var(--espacio-3);
+}
+/* Practicar es dentro y cuenta para el diagnóstico; el PDF es fuera y no
+   cuenta. Por eso uno es botón sólido y el otro un enlace discreto: la
+   jerarquía visual dice cuál de los dos hace avanzar. */
+.convocatoria__practicar {
+  display: block;
+  width: 100%;
+  text-align: center;
+  text-decoration: none;
+}
+.convocatoria__pdf {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--espacio-3);
+  margin-top: var(--espacio-2);
+  padding: var(--espacio-2) var(--espacio-3);
+  border-radius: var(--radio);
+  color: var(--tinta-suave);
+  font-size: var(--tamano-menor);
+  font-weight: 600;
+  text-decoration: none;
+}
+.convocatoria__pdf:hover { background: var(--papel-hundido); }
+.convocatoria__accion { flex-shrink: 0; color: var(--tinta-tenue); }
+
+/* Estantes: un bloque por curso, y dentro los tomos en rejilla. */
+.estantes { display: grid; gap: var(--espacio-5); margin-bottom: var(--espacio-6); }
+.estante__curso {
+  font-size: var(--tamano-titulo-tarjeta);
+  font-weight: 700;
+  color: var(--grafito);
+  margin-bottom: var(--espacio-3);
+}
+.estante__lista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+  gap: var(--espacio-3);
+}
+.estante__vacio {
+  font-size: var(--tamano-menor);
+  color: var(--tinta-tenue);
+  padding: var(--espacio-3) var(--espacio-4);
+  border: 1px dashed var(--linea);
+  border-radius: var(--radio-grande);
+}
+.libro {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-3);
+  height: 100%;
+  padding: var(--espacio-4);
+  border: 1px solid var(--linea);
+  border-radius: var(--radio-grande);
+  background: var(--papel-elevado);
+}
+.libro__texto { flex: 1 1 auto; min-width: 0; }
+.libro__titulo { font-weight: 600; color: var(--tinta); }
+.libro__subtitulo { font-size: var(--tamano-menor); color: var(--tinta-suave); margin-top: var(--espacio-1); }
+.libro__fuente { font-size: var(--tamano-menor); color: var(--tinta-tenue); margin-top: var(--espacio-2); }
+.libro__abrir { align-self: flex-start; }
+
+/* Material suelto: la misma rejilla, tarjetas más compactas. */
+.biblioteca__lista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  gap: var(--espacio-3);
+}
+.recurso {
+  height: 100%;
+  padding: var(--espacio-3) var(--espacio-4);
+  border: 1px solid var(--linea);
+  border-radius: var(--radio-grande);
+  background: var(--papel-elevado);
+}
+.recurso__titulo { font-weight: 600; color: var(--tinta); }
+.recurso__detalle {
+  font-size: var(--tamano-menor);
+  line-height: 1.6;
+  color: var(--tinta-suave);
+  margin-top: var(--espacio-2);
+}
+/* La fuente va siempre visible, nunca plegada: es lo que permite comprobar por
+   qué tenemos derecho a mostrar el material. */
+.recurso__pie { font-size: var(--tamano-menor); color: var(--tinta-tenue); margin-top: var(--espacio-2); }
+
+.biblioteca__pendientes {
+  background: var(--papel-hundido);
+  border-radius: var(--radio-grande);
+  padding: var(--espacio-3) var(--espacio-4);
+  margin-bottom: var(--espacio-6);
+  font-size: var(--tamano-menor);
+  line-height: 1.6;
+  color: var(--tinta-suave);
+}

@@ -1,0 +1,196 @@
+/*
+  Admisión.
+
+  Pantalla de consulta, no de lectura larga: usa `--ancho-panel` como Meta y la
+  biblioteca, no el ancho de prosa.
+
+  Ningún color escrito a mano: todos salen de tokens.css (criterio 1.1).
+*/
+
+.admision {
+  max-width: var(--ancho-panel);
+  margin: 0 auto;
+  padding: var(--espacio-6) var(--espacio-4) var(--espacio-7);
+}
+
+.admision-cabecera { margin-bottom: var(--espacio-4); }
+.admision-cabecera__titulo {
+  font-size: var(--tamano-titulo-pagina);
+  font-weight: 800;
+  color: var(--grafito);
+  margin-top: var(--espacio-2);
+}
+
+/* El aviso de datos de ejemplo va arriba y en rojo. Un corte inventado que
+   parezca real es peor que no dar ninguno: sobre esa cifra se calcula cuánto le
+   falta a la persona. */
+.admision__aviso {
+  background: var(--rojo-fondo);
+  border-left: 4px solid var(--rojo);
+  padding: var(--espacio-3) var(--espacio-4);
+  margin-bottom: var(--espacio-6);
+  font-size: var(--tamano-menor);
+  line-height: 1.6;
+  color: var(--tinta);
+}
+.admision__aviso strong { color: var(--rojo); }
+
+.admision__bloque { margin-bottom: var(--espacio-6); }
+.admision__titular {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--espacio-3);
+  flex-wrap: wrap;
+}
+.admision__destacado {
+  font-size: var(--tamano-menor);
+  line-height: 1.6;
+  color: var(--tinta-suave);
+  margin: var(--espacio-2) 0 var(--espacio-4);
+  max-width: 68ch;
+}
+.admision__destacado strong { color: var(--tinta); }
+
+/* El sello va pegado al dato y no en una nota al pie: una advertencia que hay
+   que ir a buscar no la lee nadie. */
+.sello {
+  font-size: var(--tamano-menor);
+  font-weight: 600;
+  padding: var(--espacio-1) var(--espacio-3);
+  border-radius: var(--radio-pildora);
+}
+.sello--firme { background: var(--pino-fondo); color: var(--pino); }
+.sello--ejemplo { background: var(--rojo-fondo); color: var(--rojo); }
+
+/* --- Reparto del examen --- */
+
+.reparto { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--espacio-2); }
+.reparto__fila {
+  display: grid;
+  grid-template-columns: minmax(9rem, 14rem) 1fr auto auto;
+  align-items: center;
+  gap: var(--espacio-3);
+  padding: var(--espacio-2) var(--espacio-3);
+  border-radius: var(--radio);
+  background: var(--papel-elevado);
+}
+.reparto__curso { font-weight: 600; color: var(--tinta); }
+.reparto__barra {
+  height: 8px;
+  border-radius: var(--radio-pildora);
+  background: var(--papel-hundido);
+  overflow: hidden;
+}
+.reparto__relleno { display: block; height: 100%; background: var(--azul); }
+.reparto__puntos {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  color: var(--tinta);
+  min-width: 5ch;
+  text-align: right;
+}
+.reparto__peso {
+  font-variant-numeric: tabular-nums;
+  color: var(--tinta-tenue);
+  font-size: var(--tamano-menor);
+  min-width: 4ch;
+  text-align: right;
+}
+
+/* --- Objetivo y cortes --- */
+
+.objetivo {
+  border: 1px solid var(--linea);
+  border-radius: var(--radio-tarjeta);
+  background: var(--papel-elevado);
+  padding: var(--espacio-5);
+  margin-bottom: var(--espacio-4);
+}
+.objetivo__carrera { font-size: var(--tamano-menor); color: var(--tinta-suave); }
+.objetivo__cifra { margin: var(--espacio-2) 0; }
+.objetivo__cifra strong {
+  font-size: var(--tamano-titulo-seccion);
+  font-weight: 800;
+  color: var(--azul);
+  font-variant-numeric: tabular-nums;
+}
+.objetivo__unidad { color: var(--tinta-suave); }
+.objetivo__nota {
+  font-size: var(--tamano-menor);
+  line-height: 1.6;
+  color: var(--tinta-suave);
+  max-width: 64ch;
+}
+
+.cortes { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--espacio-2); }
+.corte {
+  display: grid;
+  grid-template-columns: 1fr auto auto auto;
+  align-items: center;
+  gap: var(--espacio-4);
+  padding: var(--espacio-3) var(--espacio-4);
+  border: 1px solid var(--linea);
+  border-radius: var(--radio-grande);
+  background: var(--papel-elevado);
+}
+.corte--tuya { border-color: var(--azul); box-shadow: var(--sombra-azul-baja); }
+.corte__carrera { font-weight: 600; color: var(--tinta); }
+.corte__dato { font-variant-numeric: tabular-nums; color: var(--tinta); font-weight: 600; }
+.corte__dato--suave { color: var(--tinta-tenue); font-weight: 400; font-size: var(--tamano-menor); }
+
+/* --- Cronograma --- */
+
+.jornadas { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--espacio-2); }
+.jornada {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--espacio-4);
+  padding: var(--espacio-3) var(--espacio-4);
+  border: 1px solid var(--linea);
+  border-radius: var(--radio-grande);
+  background: var(--papel-elevado);
+}
+.jornada--tuya { border-color: var(--azul); box-shadow: var(--sombra-azul-baja); }
+.jornada__fecha { font-weight: 600; color: var(--tinta); }
+.jornada__areas { font-size: var(--tamano-menor); color: var(--tinta-tenue); }
+
+/* --- Pasos --- */
+
+.pasos { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--espacio-3); counter-reset: paso; }
+.paso {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--espacio-4);
+  padding: var(--espacio-4);
+  border: 1px solid var(--linea);
+  border-radius: var(--radio-grande);
+  background: var(--papel-elevado);
+}
+.paso__numero {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radio-pildora);
+  background: var(--azul-fondo);
+  color: var(--azul);
+  font-weight: 800;
+  font-size: var(--tamano-menor);
+}
+.paso__titulo { font-weight: 600; color: var(--tinta); }
+.paso__detalle {
+  font-size: var(--tamano-menor);
+  line-height: 1.6;
+  color: var(--tinta-suave);
+  margin-top: var(--espacio-1);
+  max-width: 68ch;
+}
+
+@media (max-width: 620px) {
+  .reparto__fila { grid-template-columns: 1fr auto auto; }
+  .reparto__barra { grid-column: 1 / -1; order: 3; }
+  .corte { grid-template-columns: 1fr auto; row-gap: var(--espacio-1); }
+  .corte__carrera { grid-column: 1 / -1; }
+}

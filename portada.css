@@ -1,0 +1,315 @@
+/* Portada.
+   Es el único documento del proyecto que levanta la voz, y lo hace en un solo
+   sitio: la regla del corte a lo ancho de la pantalla. Todo lo demás se
+   mantiene igual de disciplinado que la aplicación, porque una portada que
+   grita en cinco sitios a la vez no dice nada.
+
+   La aplicación es papel sobre grafito. Aquí se invierte: grafito sobre el que
+   se apoyan planchas de papel. Es la misma paleta con otro peso. */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  color: var(--tinta);
+  background:
+    radial-gradient(1100px 560px at 10% -10%, var(--fondo-bajo), transparent 58%),
+    radial-gradient(900px 500px at 92% 0%, var(--fondo-alto), transparent 56%),
+    var(--fondo);
+  background-attachment: fixed;
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 { font-family: var(--serif); font-weight: 800; margin: 0; line-height: 1.05; letter-spacing: -0.03em; color: var(--grafito); }
+p, ul { margin: 0; }
+img { display: block; max-width: 100%; height: auto; }
+:focus-visible { outline: 2.5px solid var(--azul); outline-offset: 3px; }
+
+.salto-contenido {
+  position: absolute; left: -9999px; top: 0; z-index: 20;
+  background: var(--grafito); color: var(--papel-elevado);
+  padding: var(--espacio-3) var(--espacio-4);
+  border-radius: var(--radio);
+}
+.salto-contenido:focus { left: var(--espacio-3); top: var(--espacio-3); }
+
+/* --- Cabecera --- */
+.cabecera {
+  position: relative; z-index: 2;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: var(--espacio-4);
+  max-width: 76rem; margin: 0 auto;
+  padding: var(--espacio-5) var(--espacio-5);
+}
+.cabecera__marca {
+  display: flex; align-items: center; gap: var(--espacio-2);
+  font-family: var(--serif); font-size: 1.125rem; font-weight: 700;
+  color: var(--grafito); text-decoration: none;
+}
+.cabecera__marca svg { width: 28px; height: 20px; color: var(--azul); }
+.cabecera__acceso {
+  padding: var(--espacio-3) var(--espacio-5);
+  background: var(--papel-elevado);
+  border: 1px solid var(--linea);
+  border-radius: var(--radio-pildora);
+  box-shadow: var(--sombra);
+  color: var(--grafito); text-decoration: none;
+  font-size: var(--tamano-menor); font-weight: 700;
+}
+.cabecera__acceso:hover { border-color: var(--azul); color: var(--azul); }
+
+/* --- Héroe --- */
+.portada {
+  position: relative; z-index: 2;
+  max-width: 76rem; margin: 0 auto;
+  padding: var(--espacio-6) var(--espacio-5) var(--espacio-7);
+}
+.portada { text-align: center; }
+.portada__texto { max-width: 52rem; margin: 0 auto; }
+.portada .rotulo { margin-bottom: var(--espacio-4); }
+.portada__titulo {
+  font-size: clamp(2.75rem, 8vw, 5.5rem);
+  margin-bottom: var(--espacio-5);
+}
+.portada__acento {
+  background: linear-gradient(96deg, var(--azul), var(--azul-claro));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.portada__bajada {
+  font-size: clamp(1rem, 2vw, 1.1875rem);
+  color: var(--tinta-suave);
+  max-width: 36rem; margin: 0 auto;
+}
+.portada__acciones { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--espacio-3); margin-top: var(--espacio-6); }
+
+.cta {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 50px; padding: 0 var(--espacio-5);
+  background: var(--azul); color: var(--sobre-azul);
+  border: 1.5px solid var(--azul);
+  border-radius: var(--radio-pildora);
+  box-shadow: var(--sombra-azul);
+  font-size: var(--tamano-menor); font-weight: 700;
+  text-decoration: none;
+  transition: transform 120ms ease, background 120ms ease;
+}
+.cta:hover { background: var(--azul-fuerte); border-color: var(--azul-fuerte); }
+.cta:active { transform: translateY(1px); }
+.cta--liviano {
+  background: var(--papel-elevado); color: var(--grafito);
+  border-color: var(--linea); box-shadow: var(--sombra);
+}
+.cta--liviano:hover { border-color: var(--azul); color: var(--azul); }
+.cta--claro { background: var(--papel-elevado); color: var(--azul); border-color: var(--papel-elevado); }
+
+/* --- La regla del corte. El único gesto grande de todo el proyecto. --- */
+.regla { margin: calc(var(--espacio-7) * 1.6) 0 var(--espacio-6); }
+.regla__pista {
+  position: relative;
+  height: 18px;
+  border-radius: 8px;
+  background: var(--papel-hundido);
+  margin-top: 4.5rem;
+}
+.regla__avance {
+  position: absolute; inset: 0 auto 0 0; width: 58%;
+  border-radius: 8px;
+  background: linear-gradient(90deg, var(--azul-claro), var(--azul));
+}
+.regla__banda {
+  position: absolute; top: -4px; bottom: -4px; left: 51.5%; width: 13%;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--azul) 18%, transparent);
+}
+.regla__tu, .regla__corte { position: absolute; bottom: 100%; display: grid; gap: 2px; }
+.regla__tu { left: 58%; transform: translateX(-50%); text-align: center; }
+.regla__corte { left: 72%; padding-left: var(--espacio-3); border-left: 3px solid var(--rojo); }
+.regla__corte::after {
+  content: ''; position: absolute; top: 100%; left: -3px;
+  width: 3px; height: 26px; background: var(--rojo);
+}
+.regla__tu b, .regla__corte b {
+  font-family: var(--serif);
+  font-size: clamp(2.25rem, 6vw, 3.5rem);
+  line-height: 0.9;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+.regla__tu b { color: var(--azul); }
+.regla__tu i, .regla__corte i {
+  font-style: normal; font-size: var(--tamano-micro);
+  color: var(--tinta-tenue);
+  margin-bottom: 6px;
+}
+.regla__pie {
+  margin: var(--espacio-5) auto 0;
+  max-width: 34rem;
+  font-size: var(--tamano-menor);
+  color: var(--tinta-suave);
+}
+
+.portada__pantalla {
+  margin-top: var(--espacio-6);
+  border: 1px solid var(--linea);
+  border-radius: var(--radio-panel);
+  overflow: hidden;
+  box-shadow: var(--sombra-alta);
+}
+
+/* --- Franja de comparación --- */
+.franja { position: relative; z-index: 2; }
+.franja__contenido { max-width: 68rem; margin: 0 auto; padding: var(--espacio-7) var(--espacio-5); }
+.franja__titulo { font-size: clamp(1.625rem, 4vw, 2.5rem); color: var(--grafito); max-width: 30rem; }
+.comparacion {
+  display: grid; gap: var(--espacio-5);
+  margin-top: var(--espacio-6);
+}
+@media (min-width: 48rem) { .comparacion { grid-template-columns: 1fr 1fr; gap: var(--espacio-7); } }
+.comparacion__rotulo {
+  font-size: var(--tamano-nota); color: var(--tinta-tenue);
+  padding-bottom: var(--espacio-2); border-bottom: 1px solid var(--linea);
+}
+.comparacion__lista { list-style: none; padding: 0; margin-top: var(--espacio-3); }
+.comparacion__lista li {
+  padding: var(--espacio-3) 0 var(--espacio-3) var(--espacio-5);
+  border-bottom: 1px solid var(--linea);
+  font-size: var(--tamano-menor);
+  position: relative;
+}
+.comparacion__lista li::before {
+  position: absolute; left: 0; top: var(--espacio-3);
+  font-weight: 700;
+}
+.comparacion__lista--vago li { color: var(--tinta-tenue); }
+.comparacion__lista--vago li::before { content: '—'; color: var(--tinta-tenue); }
+.comparacion__lista--util li { color: var(--tinta); font-weight: 500; }
+.comparacion__lista--util li::before { content: '✓'; color: var(--azul); }
+
+/* --- Pasos --- */
+.pasos { position: relative; z-index: 2; padding: var(--espacio-7) var(--espacio-5); }
+.seccion__titulo {
+  max-width: 68rem; margin: 0 auto var(--espacio-6);
+  font-size: clamp(1.5rem, 3.5vw, 2.25rem); color: var(--grafito);
+}
+.paso {
+  display: grid; gap: var(--espacio-5);
+  max-width: 68rem; margin: 0 auto var(--espacio-7);
+  align-items: center;
+}
+@media (min-width: 52rem) {
+  .paso { grid-template-columns: 1fr 20rem; gap: var(--espacio-7); }
+  .paso--invertido .paso__texto { order: 2; }
+  .paso--ancho { grid-template-columns: 1fr; }
+}
+.paso__n {
+  display: inline-grid; place-items: center; width: 34px; height: 34px;
+  border-radius: var(--radio-grande); background: var(--azul-fondo);
+  color: var(--azul); font-size: var(--tamano-nota); font-weight: 800;
+  margin-bottom: var(--espacio-3);
+}
+.paso__titulo { font-size: clamp(1.375rem, 3vw, 1.875rem); color: var(--grafito); }
+.paso__cuerpo { margin-top: var(--espacio-3); color: var(--tinta-suave); max-width: 34rem; }
+.paso__figura img { border: 1px solid var(--linea); border-radius: var(--radio-tarjeta); box-shadow: var(--sombra-alta); }
+.paso__figura--movil { justify-self: center; max-width: 16rem; }
+.paso--ancho .paso__figura { margin-top: var(--espacio-5); }
+
+/* --- Academias --- */
+.academias {
+  position: relative; z-index: 2;
+  display: grid; gap: var(--espacio-6);
+  padding: var(--espacio-7) var(--espacio-5);
+}
+@media (min-width: 56rem) {
+  .academias {
+    grid-template-columns: minmax(0, 24rem) minmax(0, 1fr);
+    gap: var(--espacio-7);
+    max-width: 76rem; margin: 0 auto;
+    align-items: center;
+  }
+}
+.academias__rotulo { font-size: var(--tamano-micro); color: var(--azul); font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.academias__titulo { font-size: clamp(1.625rem, 4vw, 2.5rem); color: var(--grafito); margin-top: var(--espacio-2); }
+.academias__cuerpo { margin-top: var(--espacio-4); color: var(--tinta-suave); }
+.academias__lista { list-style: none; padding: 0; margin: var(--espacio-5) 0; }
+.academias__lista li {
+  padding: var(--espacio-3) 0 var(--espacio-3) var(--espacio-5);
+  border-bottom: 1px solid var(--linea);
+  font-size: var(--tamano-menor);
+  position: relative;
+}
+.academias__lista li::before {
+  content: ''; position: absolute; left: 0; top: 1.4em;
+  width: 10px; height: 2px; background: var(--azul);
+}
+.academias__figura img { border: 1px solid var(--linea); border-radius: var(--radio-tarjeta); box-shadow: var(--sombra-alta); }
+
+/* --- Lo que no hacemos --- */
+.honesto {
+  position: relative; z-index: 2;
+  max-width: var(--ancho-panel); margin: var(--espacio-7) auto;
+  padding: var(--espacio-7) var(--espacio-6);
+  background: var(--destacado-fondo); color: var(--destacado-tinta);
+  border-radius: var(--radio-panel);
+}
+.honesto h2, .honesto h3 { color: var(--destacado-tinta); }
+.honesto__titulo {
+  max-width: 68rem; margin: 0 auto;
+  font-size: clamp(1.625rem, 4vw, 2.5rem);
+}
+.honesto__entrada {
+  max-width: 68rem; margin: var(--espacio-4) auto 0;
+  color: var(--destacado-tenue);
+  max-width: 36rem;
+}
+.honesto__lista {
+  list-style: none; padding: 0;
+  max-width: 68rem; margin: var(--espacio-6) auto 0;
+  display: grid; gap: var(--espacio-5);
+}
+@media (min-width: 48rem) { .honesto__lista { grid-template-columns: 1fr 1fr; gap: var(--espacio-6); } }
+.honesto__lista li { padding-top: var(--espacio-4); border-top: 1px solid var(--destacado-linea); }
+.honesto__lista h3 { font-size: 1.125rem; }
+.honesto__lista p {
+  margin-top: var(--espacio-2);
+  font-size: var(--tamano-menor);
+  color: var(--destacado-tenue);
+}
+
+/* --- Cierre --- */
+.cierre { position: relative; z-index: 2; text-align: center; padding: var(--espacio-7) var(--espacio-5); }
+.cierre__titulo { font-size: clamp(1.5rem, 3.5vw, 2.25rem); color: var(--grafito); max-width: 30rem; margin: 0 auto; }
+.cierre__cuerpo { margin-top: var(--espacio-3); color: var(--tinta-suave); }
+.cierre .cta { margin-top: var(--espacio-5); }
+.cierre__nota { margin-top: var(--espacio-5); font-size: var(--tamano-nota); color: var(--tinta-tenue); }
+
+.pie {
+  position: relative; z-index: 2;
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--espacio-3);
+  max-width: 76rem; margin: 0 auto;
+  padding: var(--espacio-5);
+  font-size: var(--tamano-nota);
+  color: var(--tinta-tenue);
+}
+.pie a { color: inherit; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: 0.01ms !important; }
+}
+
+/* Secciones centradas, como pide la referencia */
+.seccion__titulo, .franja__titulo, .honesto__titulo, .cierre__titulo { text-align: center; margin-inline: auto; }
+.franja__titulo, .honesto__titulo { max-width: 34rem; }
+.honesto__entrada { text-align: center; margin-inline: auto; }
+.paso__texto { max-width: 34rem; }
+
+/* Rótulo de sección. Vive aquí porque la portada no carga base.css: es una
+   página estática que no debe depender del CSS de la aplicación. */
+.rotulo {
+  display: inline-flex; align-items: center; gap: var(--espacio-2);
+  font-size: var(--tamano-micro); font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--azul);
+}
+.rotulo::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }

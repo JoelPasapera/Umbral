@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="es" data-tema="">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Umbral — cuánto te falta para ingresar</title>
+<meta name="description" content="Umbral mide a qué distancia estás del puntaje de corte de tu carrera y te dice exactamente dónde estás perdiendo puntos.">
+<!-- ▼ URL DEL DESPLIEGUE ▼
+     Apuntan al sitio donde se sirve ahora mismo. Al mover el proyecto a un
+     dominio propio hay que cambiarlas aquí y en portada.html: un canonical
+     hacia una dirección que ya no sirve el sitio le dice a Google que la
+     versión buena está en otra parte, y se pierde la indexación.
+     ▲ URL DEL DESPLIEGUE ▲ -->
+<link rel="canonical" href="https://joelpasapera.github.io/Umbral/">
+<link rel="manifest" href="./manifest.json">
+<link rel="icon" href="./icono.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="./icono.svg">
+<meta name="apple-mobile-web-app-title" content="Umbral">
+<meta name="mobile-web-app-capable" content="yes">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Umbral — cuánto te falta para ingresar">
+<meta property="og:description" content="Umbral mide a qué distancia estás del puntaje de corte de tu carrera y te dice exactamente dónde estás perdiendo puntos.">
+<meta property="og:url" content="https://joelpasapera.github.io/Umbral/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#eef4ff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#080f22" media="(prefers-color-scheme: dark)">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400..800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400..800&display=swap">
+
+<link rel="stylesheet" href="./src/ui/tokens.css">
+<link rel="stylesheet" href="./src/ui/base.css">
+<link rel="stylesheet" href="./src/features/meta/meta.css">
+<link rel="stylesheet" href="./src/features/practicar/practicar.css">
+<link rel="stylesheet" href="./src/features/estudiar/estudiar.css">
+<link rel="stylesheet" href="./src/features/entrar/entrar.css">
+<link rel="stylesheet" href="./src/features/perfil/perfil.css">
+<link rel="stylesheet" href="./src/features/admin/admin.css">
+<link rel="stylesheet" href="./src/features/terminos/terminos.css">
+<link rel="stylesheet" href="./src/features/elegir/elegir.css">
+<link rel="stylesheet" href="./src/features/temario/temario.css">
+<link rel="stylesheet" href="./src/features/biblioteca/biblioteca.css">
+<link rel="stylesheet" href="./src/features/admision/admision.css">
+</head>
+<body>
+
+<a class="salto-contenido" href="#contenido">Saltar al contenido</a>
+
+<header id="avisos" class="avisos" aria-label="Avisos de la aplicación">
+  <p class="aviso-simulado" id="aviso-simulado" hidden>Datos de ejemplo. Todavía no hay backend conectado.</p>
+</header>
+
+<header class="barra" id="barra" hidden>
+  <a class="barra__marca" href="#/meta">
+    <svg class="barra__mark" viewBox="0 0 60 42" aria-hidden="true">
+      <path d="M19 36 L19 20 A11 11 0 0 1 41 20 L41 36" fill="none" stroke="currentColor" stroke-width="5"/>
+      <rect x="0" y="36" width="60" height="3.5" fill="var(--rojo)"/>
+    </svg>
+    <span>Umbral</span>
+  </a>
+  <nav class="barra__nav" aria-label="Secciones">
+    <a class="navegacion__enlace" href="#/admision">Admisión</a>
+    <a class="navegacion__enlace" href="#/temario">Temario</a>
+    <a class="navegacion__enlace" href="#/estudiar">Estudiar</a>
+    <a class="navegacion__enlace" href="#/biblioteca">Biblioteca</a>
+    <a class="navegacion__enlace" href="#/practicar">Practicar</a>
+    <a class="navegacion__enlace" href="#/perfil">Perfil</a>
+  </nav>
+  <p class="barra__academia" id="barra-academia"></p>
+</header>
+
+<main id="contenido" tabindex="-1">
+  <!-- Esqueleto con la forma de lo que viene. Un "Cargando…" centrado deja la
+       pantalla en blanco y hace que la espera se sienta el doble de larga. -->
+  <div class="esqueleto" aria-hidden="true">
+    <div class="esqueleto__linea esqueleto__linea--titulo"></div>
+    <div class="esqueleto__linea esqueleto__linea--sub"></div>
+    <div class="esqueleto__rejilla">
+      <div class="esqueleto__bloque esqueleto__bloque--alto"></div>
+      <div class="esqueleto__columna">
+        <div class="esqueleto__bloque"></div>
+        <div class="esqueleto__bloque"></div>
+      </div>
+    </div>
+  </div>
+  <p class="solo-lectores" role="status">Cargando tu preparación</p>
+</main>
+
+<nav class="navegacion" aria-label="Secciones" id="navegacion-movil">
+  <a class="navegacion__enlace" href="#/admision">Admisión</a>
+  <a class="navegacion__enlace" href="#/temario">Temario</a>
+  <a class="navegacion__enlace" href="#/estudiar">Estudiar</a>
+    <a class="navegacion__enlace" href="#/biblioteca">Biblioteca</a>
+  <a class="navegacion__enlace" href="#/practicar">Practicar</a>
+  <a class="navegacion__enlace" href="#/perfil">Perfil</a>
+</nav>
+
+<button class="solo-lectores" id="cambiar-tema" type="button">Cambiar entre modo papel y modo noche</button>
+
+<noscript>
+  <p class="cargando">Umbral necesita JavaScript para calcular tu preparación.</p>
+</noscript>
+
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Umbral">
+  <title>Umbral</title>
+  <rect width="512" height="512" rx="112" fill="#edeae1"/>
+  <path d="M174 404 L174 190 A82 82 0 0 1 338 190 L338 404" fill="none" stroke="#1c1b18" stroke-width="38"/>
+  <rect x="0" y="404" width="512" height="24" fill="#a8322a"/>
+</svg>

@@ -1,0 +1,28 @@
+# Worker de Umbral.
+#
+# Los secretos NO van aquí: este archivo se sube al repositorio. Van con
+#   wrangler secret put NOMBRE
+# que los guarda cifrados en la plataforma y los expone al Worker por `env`.
+# Hoy no hay ninguno todavía; el hueco queda documentado para cuando lo haya.
+
+name = "umbral-api"
+main = "src/index.js"
+compatibility_date = "2026-01-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "umbral"
+database_id = "PON-AQUI-EL-ID-QUE-DA-WRANGLER"
+
+[vars]
+# Público por diseño: solo dice qué páginas pueden llamar a esta API.
+ORIGENES_PERMITIDOS = "https://umbral-buc.pages.dev,http://localhost:8080"
+
+# Una pasada al día a las 9 de la mañana en Lima (14:00 UTC).
+#
+# No más: casi todos los días el portal de la OCA no cambia, y el raspador se
+# para en cuanto ve que la huella es la misma. Pasar más a menudo no daría el
+# dato antes —lo publica quien lo publica— y sí convertiría a Umbral en una
+# molestia para un servidor público.
+[triggers]
+crons = ["0 14 * * *"]
