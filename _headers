@@ -1,0 +1,28 @@
+# Cabeceras para Cloudflare Pages.
+#
+# GitHub Pages ignora este archivo —no admite cabeceras propias—, así que aquí
+# solo se corrige el despliegue de Cloudflare. En GitHub Pages queda como un
+# archivo inerte que no molesta.
+#
+# El problema que resuelve: el navegador guarda el propio service-worker.js en
+# su caché HTTP. Si lo sirve desde ahí, nunca llega a ver que hay una versión
+# nueva, y entonces sigue entregando el shell viejo para siempre. Da igual que
+# la versión se selle bien: el archivo que decide la versión es justo el que no
+# se está releyendo. Es un bucle cerrado y no da ningún error.
+
+/service-worker.js
+  Cache-Control: no-cache, no-store, must-revalidate
+
+# El índice se revalida siempre. Es diminuto y es lo que decide qué versión de
+# todo lo demás se carga: guardarlo unos minutos ahorra nada y cuesta que la
+# gente vea la aplicación de la semana pasada.
+/
+  Cache-Control: no-cache
+/index.html
+  Cache-Control: no-cache
+/portada.html
+  Cache-Control: no-cache
+
+# El manifiesto cambia poco pero decide cómo se instala en el teléfono.
+/manifest.json
+  Cache-Control: no-cache

@@ -1,0 +1,178 @@
+/* Entrada. Una columna estrecha, sin adornos: nadie llega aquí por gusto. */
+
+.entrar {
+  max-width: 27rem;
+  padding: var(--espacio-7) var(--espacio-4) var(--espacio-6);
+}
+.entrar__forma {
+  padding: var(--espacio-6);
+  background: var(--papel-elevado);
+  border: 1px solid var(--linea);
+  border-radius: var(--radio-tarjeta);
+  box-shadow: var(--sombra-alta);
+}
+@media (min-width: 48rem) {
+  .entrar { padding-top: calc(var(--espacio-7) * 1.6); }
+}
+.entrar__cabecera {
+  margin-bottom: var(--espacio-6);
+}
+.entrar__marca {
+  display: flex;
+  align-items: center;
+  gap: var(--espacio-2);
+  font-family: var(--serif);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--grafito);
+  margin-bottom: var(--espacio-5);
+  letter-spacing: 0.02em;
+}
+/* El logotipo es la idea del producto: la puerta y la línea que hay que
+   cruzar. El arco toma el color del texto, así que funciona en los dos temas. */
+.marca {
+  width: 40px;
+  height: 29px;
+  color: var(--azul);
+  flex: 0 0 auto;
+}
+.entrar__titulo {
+  font-size: var(--tamano-titulo-pagina);
+  letter-spacing: -0.015em;
+}
+.entrar__nota {
+  font-size: var(--tamano-menor);
+  color: var(--tinta-suave);
+  margin-bottom: var(--espacio-4);
+}
+
+.entrar__forma {
+  display: grid;
+  gap: var(--espacio-4);
+}
+
+.campo {
+  display: grid;
+  gap: var(--espacio-1);
+}
+.campo__etiqueta {
+  font-size: var(--tamano-nota);
+  font-weight: 600;
+  color: var(--tinta-suave);
+}
+.campo__control {
+  min-height: 48px;
+  padding: 0 var(--espacio-3);
+  font: inherit;
+  font-size: var(--tamano-menor);
+  color: var(--tinta);
+  background: var(--papel-elevado);
+  background: var(--fondo-bajo);
+  border: 1.5px solid var(--linea);
+  border-radius: var(--radio-grande);
+}
+.campo__control:focus { border-color: var(--azul); background: var(--papel-elevado); }
+.campo__ayuda {
+  font-size: var(--tamano-nota);
+  color: var(--tinta-tenue);
+}
+
+.casilla {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--espacio-3);
+  align-items: start;
+  font-size: var(--tamano-nota);
+  color: var(--tinta-suave);
+  line-height: 1.45;
+  cursor: pointer;
+}
+.casilla input {
+  width: 18px;
+  height: 18px;
+  margin-top: 1px;
+  accent-color: var(--azul);
+}
+
+.mensaje {
+  padding: var(--espacio-3);
+  font-size: var(--tamano-nota);
+  border-left: 3px solid;
+}
+.mensaje--error {
+  background: var(--rojo-fondo);
+  border-color: var(--rojo);
+  color: var(--rojo);
+}
+.mensaje--aviso {
+  background: var(--pino-fondo);
+  border-color: var(--pino);
+  color: var(--pino);
+}
+
+.entrar__enlaces {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--espacio-3);
+}
+.enlace {
+  padding: 0;
+  background: none;
+  border: 0;
+  font-size: var(--tamano-nota);
+  color: var(--tinta-suave);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+.enlace:hover { color: var(--grafito); }
+
+.entrar__demo {
+  display: grid;
+  gap: var(--espacio-1);
+  margin-top: var(--espacio-5);
+  padding: var(--espacio-4);
+  background: var(--azul-fondo);
+  border-radius: var(--radio-grande);
+  font-size: var(--tamano-micro);
+  color: var(--tinta-suave);
+}
+
+/* Campo marcado por el validador. El color no es la única señal: el mensaje
+   nombra el problema y el foco salta al campo. */
+.campo__control--error {
+  border-color: var(--rojo);
+  border-width: 2px;
+}
+
+/* Entrada con Google. El botón lo dibuja Google dentro de este hueco. */
+.entrar__proveedores { display: grid; gap: var(--espacio-4); }
+.entrar__google { display: grid; place-items: center; min-height: 44px; }
+.entrar__sin-google {
+  padding: var(--espacio-3) var(--espacio-4);
+  background: var(--ocre-fondo); color: var(--ocre);
+  border-radius: var(--radio-grande);
+  font-size: var(--tamano-nota); line-height: 1.5;
+}
+
+/* Separador con el texto en medio de la línea */
+.entrar__separador {
+  display: flex; align-items: center; gap: var(--espacio-3);
+  font-size: var(--tamano-nota); color: var(--tinta-tenue);
+}
+.entrar__separador::before, .entrar__separador::after {
+  content: ''; flex: 1; height: 1px; background: var(--linea);
+}
+
+/* Ver la contraseña */
+.campo__con-boton { position: relative; display: flex; }
+.campo__con-boton .campo__control { flex: 1; padding-right: 4.5rem; }
+.campo__ojo {
+  position: absolute; right: 6px; top: 50%; transform: translateY(-50%);
+  padding: var(--espacio-2) var(--espacio-3);
+  background: none; border: 0; border-radius: var(--radio-pildora);
+  font-size: var(--tamano-micro); font-weight: 700; color: var(--azul);
+  cursor: pointer;
+}
+.campo__ojo:hover { background: var(--azul-fondo); }

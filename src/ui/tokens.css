@@ -1,0 +1,202 @@
+/*
+  Tokens de diseño.
+
+  Único archivo del proyecto donde puede aparecer un color escrito a mano.
+  Cualquier hex fuera de aquí es un error de revisión, y hay una prueba que lo
+  vigila (`pruebas/criterios.test.mjs`, criterio 1.1).
+
+  Dirección visual: claro, aireado, azul. Superficies blancas redondeadas sobre
+  un fondo con degradado suave, tipografía de palo muy pesada para los títulos,
+  y el rojo reservado para una sola cosa: la línea de corte. Ese rojo es la
+  única nota cálida de toda la paleta, y por eso el ojo va directo a ella.
+*/
+
+:root {
+  color-scheme: light dark;
+
+  /* Fondo y superficies */
+  --fondo: #eef4ff;
+  --fondo-alto: #dfeaff;
+  --fondo-bajo: #f7faff;
+  --papel: var(--fondo);
+  --papel-elevado: #ffffff;
+  --papel-hundido: #eef2f9;
+
+  /* Texto */
+  --grafito: #0d1730;
+  --tinta: #1f2b45;
+  --tinta-suave: #4a5876;
+  --tinta-tenue: #5b6883;
+
+  /* Líneas */
+  --linea: #dbe4f3;
+  --linea-fuerte: #8494b4;
+
+  /* Azul: la acción */
+  --azul: #1d4ed8;
+  --azul-fuerte: #1739a8;
+  --azul-claro: #4a86f7;
+  --azul-fondo: #e2ecff;
+  --sobre-azul: #ffffff;
+  --sombra-azul: 0 6px 18px rgba(29, 78, 216, .22);
+  --sombra-azul-baja: 0 2px 8px rgba(29, 78, 216, .2);
+
+  /* Rojo: reservado para la línea de corte y los errores. Nada más. */
+  --rojo: #c62828;
+  --rojo-fondo: #fdeaea;
+
+  /* Estados */
+  --pino: #0f7a54;
+  --pino-fondo: #def5eb;
+  --ocre: #92600b;
+  --ocre-fondo: #fdf0d8;
+
+  /* Superficie destacada: el panel del índice */
+  --destacado-fondo: #12224f;
+  --destacado-tinta: #f4f8ff;
+  --destacado-tenue: #a9bce4;
+  --destacado-linea: #2c4180;
+  --rojo-sobre-destacado: #ef6a6a;
+  --rojo-realce: #ffa8a8;
+  --pino-sobre-destacado: #4fc79a;
+  --pino-realce: #8fe3c1;
+
+  /* Sombras: suaves y azuladas, no grises. Una sombra gris sobre un fondo
+     azul se ve sucia. */
+  --sombra: 0 1px 2px rgba(13, 23, 48, .04), 0 8px 24px rgba(29, 78, 216, .07);
+  --sombra-alta: 0 2px 6px rgba(13, 23, 48, .05), 0 22px 50px rgba(29, 78, 216, .12);
+
+  /* Tipografía: una sola familia, usada con saltos de peso muy marcados.
+     Archivo tiene una negrita con presencia real y cifras que se alinean. */
+  --serif: 'Archivo', system-ui, sans-serif;
+  --sans: 'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --tamano-cifra: clamp(3.5rem, 13vw, 5rem);
+  --tamano-titulo-pagina: clamp(1.75rem, 3.4vw, 2.375rem);
+  --tamano-titulo-seccion: clamp(1.625rem, 3.6vw, 2.5rem);
+  --tamano-titulo-tarjeta: 1.25rem;
+  --tamano-titulo: 1.375rem;
+  --tamano-seccion: 1rem;
+  --tamano-cuerpo: 1rem;
+  --tamano-menor: 0.9375rem;
+  --tamano-nota: 0.875rem;
+  --tamano-micro: 0.78125rem;
+
+  /* Ritmo */
+  --espacio-1: 0.25rem;
+  --espacio-2: 0.5rem;
+  --espacio-3: 0.75rem;
+  --espacio-4: 1rem;
+  --espacio-5: 1.5rem;
+  --espacio-6: 2rem;
+  --espacio-7: 3rem;
+
+  --ancho-lectura: 34rem;
+  --ancho-panel: 72rem;
+
+  /* Redondeos: generosos, y distintos según la pieza. */
+  --radio: 10px;
+  --radio-grande: 14px;
+  --radio-tarjeta: 20px;
+  --radio-panel: 28px;
+  --radio-pildora: 999px;
+  --borde: 1px solid var(--linea);
+
+  --grano: none;
+  --grano-fuerza: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fondo: #080f22;
+    --fondo-alto: #0d1730;
+    --fondo-bajo: #060b1a;
+    --papel: var(--fondo);
+    --papel-elevado: #101c3a;
+    --papel-hundido: #0b142b;
+    --grafito: #eaf1ff;
+    --tinta: #d5e0f5;
+    --tinta-suave: #9aabcd;
+    --tinta-tenue: #7d8dae;
+    --linea: #22304f;
+    --linea-fuerte: #5a6c94;
+    --azul: #5b93ff;
+    --azul-fuerte: #7dabff;
+    --azul-claro: #8fbaff;
+    --azul-fondo: #16264d;
+    --sobre-azul: #06122c;
+    --sombra-azul: 0 6px 18px rgba(0,0,0,.4);
+    --sombra-azul-baja: 0 2px 8px rgba(0,0,0,.35);
+    --rojo: #ff8d8d;
+    --rojo-fondo: #37171c;
+    --pino: #63d8a8;
+    --pino-fondo: #0d2b22;
+    --ocre: #e0b055;
+    --ocre-fondo: #2e2312;
+    --destacado-fondo: #152350;
+    --sombra: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.32);
+    --sombra-alta: 0 2px 6px rgba(0,0,0,.45), 0 22px 50px rgba(0,0,0,.4);
+  }
+}
+
+[data-tema='noche'] {
+  --fondo: #080f22;
+  --fondo-alto: #0d1730;
+  --fondo-bajo: #060b1a;
+  --papel: var(--fondo);
+  --papel-elevado: #101c3a;
+  --papel-hundido: #0b142b;
+  --grafito: #eaf1ff;
+  --tinta: #d5e0f5;
+  --tinta-suave: #9aabcd;
+  --tinta-tenue: #7d8dae;
+  --linea: #22304f;
+  --linea-fuerte: #5a6c94;
+  --azul: #5b93ff;
+  --azul-fuerte: #7dabff;
+  --azul-claro: #8fbaff;
+  --azul-fondo: #16264d;
+  --sobre-azul: #06122c;
+  --sombra-azul: 0 6px 18px rgba(0,0,0,.4);
+  --sombra-azul-baja: 0 2px 8px rgba(0,0,0,.35);
+  --rojo: #ff8d8d;
+  --rojo-fondo: #37171c;
+  --pino: #63d8a8;
+  --pino-fondo: #0d2b22;
+  --ocre: #e0b055;
+  --ocre-fondo: #2e2312;
+  --destacado-fondo: #152350;
+  --sombra: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.32);
+  --sombra-alta: 0 2px 6px rgba(0,0,0,.45), 0 22px 50px rgba(0,0,0,.4);
+}
+
+[data-tema='papel'] {
+  --fondo: #eef4ff;
+  --fondo-alto: #dfeaff;
+  --fondo-bajo: #f7faff;
+  --papel: var(--fondo);
+  --papel-elevado: #ffffff;
+  --papel-hundido: #eef2f9;
+  --grafito: #0d1730;
+  --tinta: #1f2b45;
+  --tinta-suave: #4a5876;
+  --tinta-tenue: #5b6883;
+  --linea: #dbe4f3;
+  --linea-fuerte: #8494b4;
+  --azul: #1d4ed8;
+  --azul-fuerte: #1739a8;
+  --azul-claro: #4a86f7;
+  --azul-fondo: #e2ecff;
+  --sobre-azul: #ffffff;
+  --sombra-azul: 0 6px 18px rgba(29,78,216,.22);
+  --sombra-azul-baja: 0 2px 8px rgba(29,78,216,.2);
+  --rojo: #c62828;
+  --rojo-fondo: #fdeaea;
+  --pino: #0f7a54;
+  --pino-fondo: #def5eb;
+  --ocre: #92600b;
+  --ocre-fondo: #fdf0d8;
+  --destacado-fondo: #12224f;
+  --sombra: 0 1px 2px rgba(13,23,48,.04), 0 8px 24px rgba(29,78,216,.07);
+  --sombra-alta: 0 2px 6px rgba(13,23,48,.05), 0 22px 50px rgba(29,78,216,.12);
+}

@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Umbral — cuánto te falta para ingresar</title>
+<meta name="description" content="Umbral mide tu preparación contra el puntaje de corte de tu carrera y te dice dónde estás perdiendo puntos. Para academias preuniversitarias del Perú.">
+<!-- ▼ URL DEL DESPLIEGUE ▼
+     Apuntan al sitio donde se sirve ahora mismo. Al mover el proyecto a un
+     dominio propio hay que cambiarlas aquí y en portada.html: un canonical
+     hacia una dirección que ya no sirve el sitio le dice a Google que la
+     versión buena está en otra parte, y se pierde la indexación.
+     ▲ URL DEL DESPLIEGUE ▲ -->
+<link rel="canonical" href="https://joelpasapera.github.io/Umbral/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Umbral — cuánto te falta para ingresar">
+<meta property="og:description" content="Mide tu preparación contra el puntaje de corte de tu carrera y descubre dónde estás perdiendo puntos.">
+<meta property="og:url" content="https://joelpasapera.github.io/Umbral/">
+<meta property="og:image" content="https://joelpasapera.github.io/Umbral/imagenes/producto-meta.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#eef4ff">
+<link rel="icon" href="./icono.svg" type="image/svg+xml">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400..800&display=swap">
+<link rel="stylesheet" href="./src/ui/tokens.css">
+<link rel="stylesheet" href="./portada.css">
+</head>
+<body>
+
+<a class="salto-contenido" href="#contenido">Saltar al contenido</a>
+
+<header class="cabecera">
+  <a class="cabecera__marca" href="./portada.html">
+    <svg viewBox="0 0 60 42" aria-hidden="true"><path d="M19 36 L19 20 A11 11 0 0 1 41 20 L41 36" fill="none" stroke="currentColor" stroke-width="5"/><rect x="0" y="36" width="60" height="3.5" fill="currentColor" opacity=".55"/></svg>
+    <span>Umbral</span>
+  </a>
+  <a class="cabecera__acceso" href="./index.html#/entrar">Entrar</a>
+</header>
+
+<main id="contenido">
+
+<section class="portada">
+  <div class="portada__texto">
+    <p class="rotulo">Preparación medida, no estimada</p>
+    <h1 class="portada__titulo">Cuánto te falta<br><span class="portada__acento">para ingresar</span></h1>
+    <p class="portada__bajada">
+      Estudias todos los días y nadie te dice si alcanza. Umbral mide tu preparación
+      contra el puntaje de corte de tu carrera, y te dice exactamente dónde estás
+      perdiendo puntos.
+    </p>
+    <div class="portada__acciones">
+      <a class="cta" href="./index.html#/entrar">Entrar con mi código</a>
+      <a class="cta cta--liviano" href="#academias">Soy una academia</a>
+    </div>
+  </div>
+
+  <!-- El gesto grande: la escala del corte a lo ancho de la pantalla. Es la
+       promesa del producto en una sola figura, y el único sitio donde este
+       diseño levanta la voz. -->
+  <figure class="regla" aria-labelledby="regla-pie">
+    <div class="regla__pista">
+      <span class="regla__avance"></span>
+      <span class="regla__banda"></span>
+      <span class="regla__tu"><b>58</b><i>tú, hoy</i></span>
+      <span class="regla__corte"><b>72</b><i>corte</i></span>
+    </div>
+    <figcaption class="regla__pie" id="regla-pie">
+      Catorce puntos. Eso es lo que separa a un postulante de su vacante, y casi
+      nadie sabe cuántos le faltan.
+    </figcaption>
+  </figure>
+
+  <div class="portada__pantalla">
+    <img src="./imagenes/producto-meta.webp" width="1600" height="1075" alt="Pantalla principal de Umbral con el índice de preparación, la línea de corte y el desglose por curso." fetchpriority="high" decoding="async">
+  </div>
+</section>
+
+<section class="franja">
+  <div class="franja__contenido">
+    <h2 class="franja__titulo">Las demás te dan material. Ninguna te da la distancia.</h2>
+    <div class="comparacion">
+      <div class="comparacion__lado">
+        <p class="comparacion__rotulo">Lo que sabes hoy</p>
+        <ul class="comparacion__lista comparacion__lista--vago">
+          <li>Estudié tres horas</li>
+          <li>Llevo 12 días seguidos</li>
+          <li>Tengo 4 800 puntos de experiencia</li>
+          <li>Voy por el nivel 7</li>
+        </ul>
+      </div>
+      <div class="comparacion__lado">
+        <p class="comparacion__rotulo">Lo que necesitas saber</p>
+        <ul class="comparacion__lista comparacion__lista--util">
+          <li>Vas en 58 sobre 100, con 13 de margen</li>
+          <li>El corte del año pasado fue 72</li>
+          <li>Trigonometría te cuesta 7,1 puntos del examen</li>
+          <li>Doce preguntas de identidades te devuelven la mitad</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pasos" id="como">
+  <h2 class="seccion__titulo">Cómo funciona</h2>
+
+  <article class="paso">
+    <div class="paso__texto">
+      <p class="paso__n">Uno</p>
+      <h3 class="paso__titulo">Eliges tu meta</h3>
+      <p class="paso__cuerpo">
+        Universidad y carrera. Cada una pesa los cursos distinto: trigonometría vale
+        nueve puntos del examen en Ingeniería de Sistemas y no entra en Derecho.
+        Todo el diagnóstico se recalcula.
+      </p>
+    </div>
+    <div class="paso__figura paso__figura--movil">
+      <img src="./imagenes/producto-movil.webp" width="480" height="985" alt="Umbral en un teléfono, con la meta y el índice de preparación." loading="lazy" decoding="async">
+    </div>
+  </article>
+
+  <article class="paso paso--invertido">
+    <div class="paso__texto">
+      <p class="paso__n">Dos</p>
+      <h3 class="paso__titulo">Resuelves y el número se mueve</h3>
+      <p class="paso__cuerpo">
+        Cada respuesta ajusta la estimación. Lo reciente pesa más que lo de marzo,
+        y acertar una difícil informa más que acertar una fácil. Si fallas, la
+        explicación va del paso que fallaste, no de la respuesta correcta.
+      </p>
+    </div>
+    <div class="paso__figura paso__figura--movil">
+      <img src="./imagenes/producto-practicar.webp" width="480" height="985" alt="Pantalla de práctica con una pregunta de trigonometría y sus alternativas." loading="lazy" decoding="async">
+    </div>
+  </article>
+
+  <article class="paso paso--ancho">
+    <div class="paso__texto">
+      <p class="paso__n">Tres</p>
+      <h3 class="paso__titulo">Sabes qué estudiar y por qué</h3>
+      <p class="paso__cuerpo">
+        El material no se ordena por carpetas: se ordena por cuántos puntos te
+        devuelve. El curso que más te cuesta va primero, con tu nivel al lado.
+      </p>
+    </div>
+    <div class="paso__figura">
+      <img src="./imagenes/producto-estudiar.webp" width="1400" height="941" alt="Pantalla de estudio con el material agrupado por curso y ordenado por urgencia." loading="lazy" decoding="async">
+    </div>
+  </article>
+</section>
+
+<section class="academias" id="academias">
+  <div class="academias__contenido">
+    <p class="academias__rotulo">Para academias</p>
+    <h2 class="academias__titulo">Tu contenido, midiendo de verdad</h2>
+    <p class="academias__cuerpo">
+      Umbral no reemplaza tu material: lo convierte en diagnóstico. El panel te
+      dice qué parte del examen tu catálogo todavía no puede medir, y qué temas
+      tienen preguntas pero ningún material donde estudiar.
+    </p>
+    <ul class="academias__lista">
+      <li>Tus alumnos entran con un código tuyo. Nadie más ve tu contenido.</li>
+      <li>Convierte tus boletines en preguntas etiquetadas. Tú apruebas cada una.</li>
+      <li>Presupuesto mensual con techo, visible. Sin facturas sorpresa.</li>
+      <li>Empiezas con un banco base, así el primer día ya funciona.</li>
+    </ul>
+    <a class="cta" href="mailto:hola@umbral.pe">Pedir una demostración</a>
+  </div>
+  <div class="academias__figura">
+    <img src="./imagenes/producto-panel.webp" width="1400" height="941" alt="Panel de la academia mostrando qué porcentaje del examen no puede medirse con el contenido actual." loading="lazy" decoding="async">
+  </div>
+</section>
+
+<section class="honesto">
+  <h2 class="honesto__titulo">Lo que no vas a encontrar aquí</h2>
+  <p class="honesto__entrada">
+    Cuatro cosas que se descartaron a propósito. Están en esta lista porque cada
+    una hace que el número deje de ser cierto.
+  </p>
+  <ul class="honesto__lista">
+    <li>
+      <h3>Puntos de experiencia y niveles</h3>
+      <p>Un segundo número, falso, que sube con solo abrir la aplicación. Compite con el real y gana, porque es más fácil de mover.</p>
+    </li>
+    <li>
+      <h3>Predicciones de si vas a ingresar</h3>
+      <p>Damos una estimación con su margen a la vista. Adivinar el resultado destruye en una frase la honestidad de todo lo demás.</p>
+    </li>
+    <li>
+      <h3>Chat abierto sin moderar</h3>
+      <p>El público es mayoritariamente menor de edad. Sin moderación, sin reportar y sin bloquear, es un riesgo que no vale la pena.</p>
+    </li>
+    <li>
+      <h3>Un número cuando no hay datos</h3>
+      <p>Si todavía no te hemos visto resolver lo suficiente, decimos que no sabemos. Un 61 inventado se cobra el día del examen.</p>
+    </li>
+  </ul>
+</section>
+
+<section class="cierre">
+  <h2 class="cierre__titulo">Faltan 94 días para el próximo examen de San Marcos.</h2>
+  <p class="cierre__cuerpo">Averigua hoy cuántos puntos te separan.</p>
+  <a class="cta cta--claro" href="./index.html#/entrar">Entrar con mi código</a>
+  <p class="cierre__nota">¿Tu academia todavía no usa Umbral? Escríbenos a hola@umbral.pe</p>
+</section>
+
+</main>
+
+<footer class="pie">
+  <p>Umbral · Preparación para exámenes de admisión</p>
+  <a href="./privacidad.html">Privacidad</a>
+  <a href="./terminos.html">Términos</a>
+</footer>
+
+</body>
+</html>

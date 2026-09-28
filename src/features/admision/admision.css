@@ -1,0 +1,382 @@
+/*
+  Admisión.
+
+  Pantalla de consulta, no de lectura larga: usa `--ancho-panel` como Meta y la
+  biblioteca, no el ancho de prosa.
+
+  Ningún color escrito a mano: todos salen de tokens.css (criterio 1.1).
+*/
+
+.admision {
+  max-width: var(--ancho-panel);
+  margin: 0 auto;
+  padding: var(--espacio-6) var(--espacio-4) var(--espacio-7);
+}
+
+.admision-cabecera { margin-bottom: var(--espacio-4); }
+.admision-cabecera__titulo {
+  font-size: var(--tamano-titulo-pagina);
+  font-weight: 800;
+  color: var(--grafito);
+  margin-top: var(--espacio-2);
+}
+
+/* El aviso de datos de ejemplo va arriba y en rojo. Un corte inventado que
+   parezca real es peor que no dar ninguno: sobre esa cifra se calcula cuánto le
+   falta a la persona. */
+.admision__aviso {
+  background: var(--rojo-fondo);
+  border-left: 4px solid var(--rojo);
+  padding: var(--espacio-3) var(--espacio-4);
+  margin-bottom: var(--espacio-6);
+  font-size: var(--tamano-menor);
+  line-height: 1.6;
+  color: var(--tinta);
+}
+.admision__aviso strong { color: var(--rojo); }
+
+.admision__bloque {
+  margin-bottom: var(--espacio-3);
+  border: 1px solid var(--linea);
+  border-radius: var(--radio-tarjeta);
+  background: var(--papel-elevado);
+  overflow: hidden;
+}
+.admision__bloque--abierta { border-color: var(--linea-fuerte); }
+
+/* La cabecera es un botón de verdad: se llega con el tabulador y se activa con
+   la barra espaciadora. Un `div` con un `click` no hace ninguna de las dos. */
+.plegable__cabecera {
+  display: flex;
+  align-items: center;
+  gap: var(--espacio-3);
+  width: 100%;
+  padding: var(--espacio-4);
+  border: 0;
+  background: none;
+  cursor: pointer;
+  text-align: left;
+}
+.plegable__cabecera:hover { background: var(--papel-hundido); }
+.plegable__flecha { color: var(--tinta-tenue); font-size: var(--tamano-menor); }
+.plegable__titulo { flex: 1 1 auto; }
+.plegable__cuerpo { padding: 0 var(--espacio-4) var(--espacio-5); }
+@media (prefers-reduced-motion: no-preference) {
+  .plegable__cuerpo { animation: abrir-plegable 160ms cubic-bezier(.2,.7,.3,1); }
+}
+@keyframes abrir-plegable {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: none; }
+}
+.admision__titular {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--espacio-3);
+  flex-wrap: wrap;
+}
+.admision__destacado {
+  font-size: var(--tamano-menor);
+  line-height: 1.6;
+  color: var(--tinta-suave);
+  margin: var(--espacio-2) 0 var(--espacio-4);
+  max-width: 68ch;
+}
+.admision__destacado strong { color: var(--tinta); }
+
+/* El sello va pegado al dato y no en una nota al pie: una advertencia que hay
+   que ir a buscar no la lee nadie. */
+.sello {
+  font-size: var(--tamano-menor);
+  font-weight: 600;
+  padding: var(--espacio-1) var(--espacio-3);
+  border-radius: var(--radio-pildora);
+}
+.sello--firme { background: var(--pino-fondo); color: var(--pino); }
+.sello--tibio { background: var(--papel-hundido); color: var(--tinta-suave); }
+.sello--ejemplo { background: var(--rojo-fondo); color: var(--rojo); }
+.sello-con-fuente { display: inline-flex; align-items: center; gap: var(--espacio-2); flex-wrap: wrap; }
+.sello__fuente { font-size: var(--tamano-menor); }
+
+.admision__subtitulo {
+  font-size: var(--tamano-titulo-tarjeta);
+  font-weight: 700;
+  color: var(--grafito);
+  margin: var(--espacio-6) 0 var(--espacio-2);
+}
+
+/* La cuenta atrás es lo primero que mira alguien que entra aquí. */
+.cuenta-atras {
+  display: flex;
+  align-items: baseline;
+  gap: var(--espacio-4);
+  flex-wrap: wrap;
+  padding: var(--espacio-5);
+  margin: var(--espacio-3) 0 var(--espacio-4);
+  border-radius: var(--radio-tarjeta);
+  background: var(--papel-elevado);
+  border: 1px solid var(--linea);
+}
+.cuenta-atras__cifra strong {
+  font-size: var(--tamano-titulo-seccion);
+  font-weight: 800;
+  color: var(--azul);
+  font-variant-numeric: tabular-nums;
+}
+.cuenta-atras__unidad { color: var(--tinta-suave); }
+.cuenta-atras__nota { color: var(--tinta-suave); font-size: var(--tamano-menor); }
+
+.jornada__detalle { font-size: var(--tamano-menor); color: var(--tinta-tenue); margin-top: var(--espacio-1); }
+
+/* Plazos de inscripción. El que está abierto se distingue del que ya cerró:
+   enseñar unas fechas pasadas como si sirvieran es peor que no enseñarlas. */
+.plazos { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--espacio-2); }
+.plazo {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: var(--espacio-4);
+  padding: var(--espacio-3) var(--espacio-4);
+  border: 1px solid var(--linea);
+  border-radius: var(--radio-grande);
+  background: var(--papel-elevado);
+}
+.plazo--abierto { border-color: var(--pino); box-shadow: var(--sombra-azul-baja); }
+.plazo--cerrado { opacity: .6; }
+.plazo__letras { font-weight: 600; color: var(--tinta); }
+.plazo__fechas { font-size: var(--tamano-menor); color: var(--tinta-suave); font-variant-numeric: tabular-nums; }
+.plazo__estado { font-size: var(--tamano-menor); font-weight: 600; color: var(--tinta-tenue); }
+.plazo--abierto .plazo__estado { color: var(--pino); }
+
+/* Cifras del proceso. */
+.cifras {
+  list-style: none;
+  margin: 0 0 var(--espacio-5);
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  gap: var(--espacio-3);
+}
+.cifra {
+  padding: var(--espacio-4);
+  border: 1px solid var(--linea);
+  border-radius: var(--radio-grande);
+  background: var(--papel-elevado);
+}
+.cifra__etiqueta { font-size: var(--tamano-menor); color: var(--tinta-suave); }
+.cifra__valor {
+  font-size: var(--tamano-titulo-tarjeta);
+  font-weight: 800;
+  color: var(--tinta);
+  font-variant-numeric: tabular-nums;
+  margin: var(--espacio-1) 0 var(--espacio-2);
+}
+.cifra__detalle {
+  font-size: var(--tamano-menor);
+  line-height: 1.5;
+  color: var(--tinta-tenue);
+  margin-bottom: var(--espacio-3);
+}
+
+/* El hueco declarado. Ocupa sitio a propósito: es una tarea pendiente, no una
+   nota al pie. */
+.hueco {
+  border: 1px dashed var(--linea-fuerte);
+  border-radius: var(--radio-tarjeta);
+  padding: var(--espacio-5);
+  background: var(--papel-hundido);
+}
+.hueco__titulo { font-size: var(--tamano-titulo-tarjeta); font-weight: 700; color: var(--grafito); }
+.hueco__motivo {
+  font-size: var(--tamano-menor);
+  line-height: 1.6;
+  color: var(--tinta-suave);
+  margin: var(--espacio-3) 0 var(--espacio-4);
+  max-width: 68ch;
+}
+.hueco .boton { display: inline-block; text-decoration: none; }
+
+/* --- Reparto del examen --- */
+
+.reparto { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--espacio-2); }
+.reparto__fila {
+  display: grid;
+  grid-template-columns: minmax(9rem, 13rem) 1fr auto auto;
+  align-items: center;
+  gap: var(--espacio-3);
+  padding: var(--espacio-2) var(--espacio-3);
+  border-radius: var(--radio);
+  background: var(--papel-hundido);
+}
+.reparto__fila--sinDatos { opacity: .72; }
+.reparto__curso { font-weight: 600; color: var(--tinta); }
+
+/* Dos capas: la clara mide cuánto vale el curso, la sólida cuánto llevas. El
+   hueco entre las dos es lo que estás dejando sobre la mesa, y es lo que hay
+   que poder ver de un vistazo. */
+.reparto__barra { height: 10px; }
+.reparto__jugo {
+  display: block;
+  height: 100%;
+  border-radius: var(--radio-pildora);
+  background: var(--azul-fondo);
+  overflow: hidden;
+}
+.reparto__dominio {
+  display: block;
+  height: 100%;
+  border-radius: var(--radio-pildora);
+  background: var(--azul);
+}
+.reparto__tuyo {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  color: var(--azul);
+  min-width: 5ch;
+  text-align: right;
+}
+.reparto__tuyo--sinDatos {
+  color: var(--tinta-tenue);
+  font-weight: 400;
+  font-size: var(--tamano-menor);
+  min-width: 8ch;
+}
+
+.reparto__leyenda {
+  display: flex;
+  align-items: center;
+  gap: var(--espacio-2);
+  flex-wrap: wrap;
+  margin-top: var(--espacio-4);
+  font-size: var(--tamano-menor);
+  color: var(--tinta-tenue);
+}
+.reparto__muestra { display: inline-block; width: 18px; height: 10px; border-radius: var(--radio-pildora); }
+.reparto__muestra--jugo { background: var(--azul-fondo); }
+.reparto__muestra--dominio { background: var(--azul); }
+
+/* Lo que llevas asegurado, en puntos del examen. */
+.asegurado {
+  padding: var(--espacio-4);
+  margin-bottom: var(--espacio-4);
+  border-radius: var(--radio-grande);
+  background: var(--papel-hundido);
+}
+.asegurado__cifra strong {
+  font-size: var(--tamano-titulo-seccion);
+  font-weight: 800;
+  color: var(--azul);
+  font-variant-numeric: tabular-nums;
+}
+.asegurado__unidad { color: var(--tinta-suave); }
+.asegurado__nota {
+  font-size: var(--tamano-menor);
+  line-height: 1.6;
+  color: var(--tinta-suave);
+  margin-top: var(--espacio-2);
+  max-width: 66ch;
+}
+.reparto__puntos {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  color: var(--tinta);
+  min-width: 5ch;
+  text-align: right;
+}
+
+/* --- Objetivo y cortes --- */
+
+.objetivo {
+  border: 1px solid var(--linea);
+  border-radius: var(--radio-tarjeta);
+  background: var(--papel-elevado);
+  padding: var(--espacio-5);
+  margin-bottom: var(--espacio-4);
+}
+.objetivo__carrera { font-size: var(--tamano-menor); color: var(--tinta-suave); }
+.objetivo__cifra { margin: var(--espacio-2) 0; }
+.objetivo__cifra strong {
+  font-size: var(--tamano-titulo-seccion);
+  font-weight: 800;
+  color: var(--azul);
+  font-variant-numeric: tabular-nums;
+}
+.objetivo__unidad { color: var(--tinta-suave); }
+.objetivo__nota {
+  font-size: var(--tamano-menor);
+  line-height: 1.6;
+  color: var(--tinta-suave);
+  max-width: 64ch;
+}
+
+.cortes { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--espacio-2); }
+.corte {
+  display: grid;
+  grid-template-columns: 1fr auto auto auto;
+  align-items: center;
+  gap: var(--espacio-4);
+  padding: var(--espacio-3) var(--espacio-4);
+  border: 1px solid var(--linea);
+  border-radius: var(--radio-grande);
+  background: var(--papel-elevado);
+}
+.corte--tuya { border-color: var(--azul); box-shadow: var(--sombra-azul-baja); }
+.corte__carrera { font-weight: 600; color: var(--tinta); }
+.corte__dato { font-variant-numeric: tabular-nums; color: var(--tinta); font-weight: 600; }
+.corte__dato--suave { color: var(--tinta-tenue); font-weight: 400; font-size: var(--tamano-menor); }
+
+/* --- Cronograma --- */
+
+.jornadas { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--espacio-2); }
+.jornada {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--espacio-4);
+  padding: var(--espacio-3) var(--espacio-4);
+  border: 1px solid var(--linea);
+  border-radius: var(--radio-grande);
+  background: var(--papel-elevado);
+}
+.jornada--tuya { border-color: var(--azul); box-shadow: var(--sombra-azul-baja); }
+.jornada__fecha { font-weight: 600; color: var(--tinta); }
+.jornada__areas { font-size: var(--tamano-menor); color: var(--tinta-tenue); }
+
+/* --- Pasos --- */
+
+.pasos { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--espacio-3); counter-reset: paso; }
+.paso {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--espacio-4);
+  padding: var(--espacio-4);
+  border: 1px solid var(--linea);
+  border-radius: var(--radio-grande);
+  background: var(--papel-elevado);
+}
+.paso__numero {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radio-pildora);
+  background: var(--azul-fondo);
+  color: var(--azul);
+  font-weight: 800;
+  font-size: var(--tamano-menor);
+}
+.paso__titulo { font-weight: 600; color: var(--tinta); }
+.paso__detalle {
+  font-size: var(--tamano-menor);
+  line-height: 1.6;
+  color: var(--tinta-suave);
+  margin-top: var(--espacio-1);
+  max-width: 68ch;
+}
+
+@media (max-width: 620px) {
+  .reparto__fila { grid-template-columns: 1fr auto auto; }
+  .reparto__barra { grid-column: 1 / -1; order: 3; }
+  .corte { grid-template-columns: 1fr auto; row-gap: var(--espacio-1); }
+  .corte__carrera { grid-column: 1 / -1; }
+}
